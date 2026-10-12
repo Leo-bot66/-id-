@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>「无法连接 App Store」一直转圈？按这个顺序排查</title>
+    <meta name="description" content="登录共享 Apple ID 时提示无法连接 App Store 或一直转圈，多与网络环境、代理状态、系统时间有关，而非账号被停用。本文给出按成本排序的六步排查流程与判断依据。">
+    <meta name="keywords" content="无法连接App Store,App Store一直转圈,app store 连接失败,共享账号登录转圈,App Store打不开">
+    <link rel="canonical" href="https://leo-bot66.github.io/-id-/error/app-store-connect/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="「无法连接 App Store」一直转圈？按这个顺序排查">
+    <meta property="og:description" content="登录共享 Apple ID 时提示无法连接 App Store 或一直转圈，多与网络环境、代理状态、系统时间有关，而非账号被停用。本文给出按成本排序的六步排查流程与判断依据。">
+    <meta property="og:url" content="https://leo-bot66.github.io/-id-/error/app-store-connect/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"无法连接 App Store 是账号被停用了吗？","acceptedAnswer":{"@type":"Answer","text":"通常不是。账号被停用会明确提示「此 Apple ID 已被停用」，而「无法连接」多为网络或本地环境问题。先按网络方向排查，再考虑换号。"}},
+        {"@type":"Question","name":"为什么开了代理反而连不上 App Store？","acceptedAnswer":{"@type":"Answer","text":"App Store 的连接对代理链路较敏感。若你的代理节点不稳定、规则把 Apple 域名走了异常线路，就会出现连接失败。排查时先关闭代理直连试一次。"}},
+        {"@type":"Question","name":"系统时间会影响 App Store 吗？","acceptedAnswer":{"@type":"Answer","text":"会。设备时间与真实时间偏差较大时，TLS 握手可能失败，表现为无法连接。建议在「设置 → 通用 → 日期与时间」中开启自动设置。"}}
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.7; color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white;
+            border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.2); padding: 40px;
+        }
+        nav.crumb { font-size: .92em; color: #888; margin-bottom: 18px; }
+        nav.crumb a { color: #667eea; text-decoration: none; }
+        nav.crumb a:hover { text-decoration: underline; }
+        h1 { color: #667eea; margin-bottom: 10px; font-size: 1.95em; line-height: 1.3; }
+        .subtitle { color: #666; font-size: 1.03em; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #eee; }
+        h2 { color: #667eea; margin-top: 34px; margin-bottom: 14px; font-size: 1.45em; border-left: 4px solid #667eea; padding-left: 15px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: 1.1em; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 10px 0 14px 24px; }
+        li { margin-bottom: 7px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ff6b6b; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .warning strong { color: #d63031; }
+        .ok { background: #eaf7ef; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .ok strong { color: #1e8449; }
+        .quote { background: #f1f3f9; border-left: 4px solid #667eea; padding: 12px 15px; margin: 16px 0; border-radius: 5px; color: #444; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .95em; }
+        .link-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 26px 0; border: 1px solid #e9ecef; }
+        .link-box a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .link-box a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .95em; }
+        th, td { border: 1px solid #e3e6ea; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #f4f6fb; color: #444; }
+        .foot { margin-top: 34px; padding-top: 18px; border-top: 1px solid #eee; color: #888; font-size: .9em; }
+        .foot a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) { .container { padding: 24px 18px; } h1 { font-size: 1.5em; } h2 { font-size: 1.24em; } table { font-size: .86em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="crumb"><a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> &rsaquo; <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> &rsaquo; 无法连接 App Store</nav>
+
+
+        <h1>「无法连接 App Store」一直转圈？按这个顺序排查</h1>
+        <p class="subtitle">先给结论：<strong>这条报错几乎不是账号问题。</strong>账号被停用会明确告诉你「已被停用」，而「无法连接」通常出在网络链路或本地环境。按下面从低成本到高成本的顺序排查即可。</p>
+
+        <h2>一、先做一次快速定性</h2>
+        <table>
+            <tr><th>你看到的提示</th><th>方向</th></tr>
+            <tr><td>无法连接 App Store / 一直转圈 / 连接超时</td><td><strong>网络或本地环境</strong>（本文）</td></tr>
+            <tr><td>此 Apple ID 已被停用 / 已被锁定</td><td>账号问题 → 换号</td></tr>
+            <tr><td>Apple ID 或密码不正确</td><td>密码已轮换 → 取最新密码</td></tr>
+        </table>
+
+        <h2>二、六步排查（按成本从低到高）</h2>
+        <ol>
+            <li><strong>切换网络。</strong>Wi-Fi 与蜂窝数据互换一次。这是最快、命中率最高的一步。</li>
+            <li><strong>关闭代理后重试。</strong>若你当前挂着代理（VPN、代理客户端），先完全关闭再打开 App Store。App Store 的连接对代理链路较敏感，节点不稳或分流规则把 Apple 域名走错线路都会导致连接失败。</li>
+            <li><strong>检查日期与时间。</strong>「设置 → 通用 → 日期与时间」→ 开启「自动设置」。系统时间偏差过大时，TLS 握手会失败，表现就是无法连接。</li>
+            <li><strong>强制刷新 App Store 会话。</strong>连续点击 App Store 底部任意标签栏 10 次可强制刷新；或直接【App Store → 头像 → 退出登录】再重新登录。</li>
+            <li><strong>重启设备。</strong>网络栈异常时，重启能清掉大部分临时状态。</li>
+            <li><strong>换一个账号试。</strong>如果换号后立刻正常，说明前一个账号确实进入了异常状态；如果换号依旧连接失败，问题一定在本地网络，与账号无关。</li>
+        </ol>
+        <div class="ok">
+            <strong>✅ 一个高判别力的测试</strong>
+            <p style="margin-top:10px;">用<strong>你自己的 Apple ID</strong>登录 App Store，看能否正常加载。如果你的账号也连不上，就是本地网络问题；如果只有共享账号连不上，再考虑换号。</p>
+        </div>
+
+        <h2>三、排查时的常见误区</h2>
+        <div class="warning">
+            <strong>⚠️ 别在这两件事上浪费时间</strong>
+            <ul style="margin-top:10px;">
+                <li><strong>反复输入密码。</strong>连接失败时密码根本没被送出去，反复输入只会增加触发安全锁定的风险。</li>
+                <li><strong>重装 iOS / 抹掉设备。</strong>「无法连接」几乎不可能需要走到这一步，先完成上述六步再说。</li>
+            </ul>
+        </div>
+
+        <h2>四、如果排查后确认是账号问题</h2>
+        <p>当且仅当「自己的账号能正常连接、共享账号始终连不上、且换号后恢复正常」时，才应把原因归到账号侧。此时按常规处理：回账号列表换一个状态正常的账号。</p>
+        <p>需要提醒的是，共享账号被大量陌生设备轮番登录，本身就可能被 Apple 临时限制部分访问。这是共享模式的固有代价，与你的设备无关。</p>
+
+        <div class="link-box">
+            <p><strong>👉 取用最新可用账号：</strong> <a href="https://id.tangping.icu/">小火箭共享账号实时可用列表</a> —— 首页逐条显示账号当前状态，点「显示密码」直接复制，拿到的永远是最新密码，不必翻找已失效的旧密码。</p>
+            <p><strong>📖 配套阅读：</strong> <a href="https://id.tangping.icu/faq">常见问题</a> ｜ <a href="https://id.tangping.icu/guide">完整下载教程</a> ｜ <a href="https://id.tangping.icu/safety">安全说明</a></p>
+            <p><strong>💎 不想再挑号：</strong> <a href="https://gg.tangping.icu/">苹果 ID 批发零售小铺</a> —— 独享账号，可自行修改密码、长期稳定。</p>
+            <p><strong>🔗 同类报错：</strong> <a href="https://leo-bot66.github.io/-id-/error/not-purchased/">搜索不到应用 / 需要付费</a> ｜ <a href="https://leo-bot66.github.io/-id-/error/locked/">已被锁定 / 已被停用</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a></p>
+        </div>
+
+        <div class="foot">
+            <p>相关页面：<a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> ｜ <a href="https://leo-bot66.github.io/-id-/safe/">安全使用指南</a> ｜ <a href="https://leo-bot66.github.io/-id-/clients/">其他客户端下载指南</a></p>
+        </div>
+    </div>
+</body>
+</html>
