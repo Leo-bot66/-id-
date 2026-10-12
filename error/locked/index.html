@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>共享 Apple ID 提示「已被锁定 / 已被停用」怎么办？</title>
+    <meta name="description" content="登录共享 Apple ID 出现「此 Apple ID 已被锁定」或「此 Apple ID 已被停用」，属于 Apple 风控结果，用户侧无法自行解锁。本文解释触发机制、为什么不建议尝试找回，以及正确的应对方式。">
+    <meta name="keywords" content="此Apple ID已被锁定,Apple ID已被停用,共享Apple ID被锁定怎么办,apple id 已停用 解决方法,小火箭账号被锁">
+    <link rel="canonical" href="https://leo-bot66.github.io/-id-/error/locked/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="共享 Apple ID 提示「已被锁定 / 已被停用」怎么办？">
+    <meta property="og:description" content="登录共享 Apple ID 出现「此 Apple ID 已被锁定」或「此 Apple ID 已被停用」，属于 Apple 风控结果，用户侧无法自行解锁。本文解释触发机制、为什么不建议尝试找回，以及正确的应对方式。">
+    <meta property="og:url" content="https://leo-bot66.github.io/-id-/error/locked/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"「已被锁定」和「已被停用」有什么区别？","acceptedAnswer":{"@type":"Answer","text":"两者都属于 Apple 的安全处置：已锁定通常与多次输错密码或异常登录有关；已停用更多与账号被判定滥用、被大量设备登录有关。对使用者来说处理方式一样——都无法自行恢复，直接换号。"}},
+        {"@type":"Question","name":"我能自己解锁吗？","acceptedAnswer":{"@type":"Answer","text":"不能。解锁流程需要的验证码或受信任设备掌握在账号持有者手里，普通使用者走不通。花费时间尝试找回没有意义。"}},
+        {"@type":"Question","name":"被锁定的账号多久会恢复？","acceptedAnswer":{"@type":"Answer","text":"不可预期，且不归使用者控制。不要等待某一天它自动恢复，直接换用列表中状态正常的其他账号。"}}
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.7; color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white;
+            border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.2); padding: 40px;
+        }
+        nav.crumb { font-size: .92em; color: #888; margin-bottom: 18px; }
+        nav.crumb a { color: #667eea; text-decoration: none; }
+        nav.crumb a:hover { text-decoration: underline; }
+        h1 { color: #667eea; margin-bottom: 10px; font-size: 1.95em; line-height: 1.3; }
+        .subtitle { color: #666; font-size: 1.03em; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #eee; }
+        h2 { color: #667eea; margin-top: 34px; margin-bottom: 14px; font-size: 1.45em; border-left: 4px solid #667eea; padding-left: 15px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: 1.1em; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 10px 0 14px 24px; }
+        li { margin-bottom: 7px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ff6b6b; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .warning strong { color: #d63031; }
+        .ok { background: #eaf7ef; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .ok strong { color: #1e8449; }
+        .quote { background: #f1f3f9; border-left: 4px solid #667eea; padding: 12px 15px; margin: 16px 0; border-radius: 5px; color: #444; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .95em; }
+        .link-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 26px 0; border: 1px solid #e9ecef; }
+        .link-box a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .link-box a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .95em; }
+        th, td { border: 1px solid #e3e6ea; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #f4f6fb; color: #444; }
+        .foot { margin-top: 34px; padding-top: 18px; border-top: 1px solid #eee; color: #888; font-size: .9em; }
+        .foot a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) { .container { padding: 24px 18px; } h1 { font-size: 1.5em; } h2 { font-size: 1.24em; } table { font-size: .86em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="crumb"><a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> &rsaquo; <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> &rsaquo; 已被锁定 / 已被停用</nav>
+
+
+        <h1>提示「此 Apple ID 已被锁定 / 已被停用」怎么办？</h1>
+        <p class="subtitle">这条报错与「密码不正确」性质<strong>完全不同</strong>：密码问题换密码就能解决，而锁定与停用是 Apple 对账号本身采取的安全处置——<strong>使用者侧无法自行恢复</strong>。认清这一点能省下大量无效尝试。</p>
+
+        <h2>一、报错的两种原文</h2>
+        <div class="quote">此 Apple ID 已被锁定。<br>请访问 iforgot.apple.com 解锁你的账户。</div>
+        <div class="quote">此 Apple ID 已被停用。<br>请联系 Apple 支持。</div>
+        <p>两句提示的措辞不同，但对使用共享账号的人来说<strong>处理方式完全一致</strong>。</p>
+
+        <h2>二、为什么会发生</h2>
+        <ul>
+            <li><strong>多地多设备同时登录。</strong>同一个账号短时间内从不同城市、不同运营商、不同设备型号登录，对 Apple 的风控系统来说是典型的异常特征。</li>
+            <li><strong>短时间大量下载请求。</strong>几十个用户在同一小时内用同一个账号下载同一款应用。</li>
+            <li><strong>反复输错密码。</strong>多人同时使用，旧密码被反复尝试，触发暴力破解保护。</li>
+        </ul>
+        <p>一句话：<strong>这是共享模式的固有代价，不是你的操作错误。</strong></p>
+
+        <h2>三、正确应对（只有一种做法）</h2>
+        <ol>
+            <li><strong>直接换号。</strong>回到账号列表页，选择状态正常的其他账号，取密码后登录。</li>
+            <li><strong>不要在该账号上做任何重试。</strong>包括重新登录、改密码、走找回流程。</li>
+            <li><strong>如果列表里所有账号都不可用</strong>，说明账号池正在经历一轮风控，等待一段时间再取新密码即可。</li>
+        </ol>
+        <div class="ok">
+            <strong>✅ 最省事的判断</strong>
+            <p style="margin-top:10px;">看到「已被锁定」或「已被停用」这四个字，<strong>不要再研究，立刻换号</strong>。这条报错没有任何用户侧的解决技巧。</p>
+        </div>
+
+        <h2>四、为什么不要尝试「找回 / 解锁」</h2>
+        <div class="warning">
+            <strong>⚠️ 三个理由</strong>
+            <ul style="margin-top:10px;">
+                <li><strong>流程走不通。</strong>解锁需要输入受信任设备验证码或绑定手机号的验证码——这些都发往账号持有者，不在你手里。</li>
+                <li><strong>可能加重风控。</strong>在已锁定的账号上反复尝试，会让 Apple 认为异常仍在持续，延长甚至固化锁定状态。</li>
+                <li><strong>不存在「付费帮解锁」的正规服务。</strong>声称能解共享账号锁定的，基本是骗局或诱导。</li>
+            </ul>
+        </div>
+
+        <h2>五、和相邻报错的区分</h2>
+        <table>
+            <tr><th>提示</th><th>可自行解决？</th><th>正确动作</th></tr>
+            <tr><td>Apple ID 或密码不正确</td><td>可</td><td>取最新密码；两次失败换号</td></tr>
+            <tr><td><strong>此 Apple ID 已被锁定 / 已被停用</strong></td><td><strong>不可</strong></td><td><strong>直接换号</strong></td></tr>
+            <tr><td>需要验证 / 双重认证 / 受信任设备</td><td>不可</td><td>直接换号</td></tr>
+            <tr><td>此 Apple ID 尚未在 App Store 使用过</td><td>可（且是正常提示）</td><td>点「检查」→ 同意条款</td></tr>
+        </table>
+
+        <h2>六、如何降低遇到的概率</h2>
+        <ul>
+            <li><strong>下载完立刻退出账号</strong>，不要长时间挂着登录状态。</li>
+            <li><strong>不要在共享账号上做多余操作</strong>：不充值、不绑定付款方式、不修改任何资料。</li>
+            <li><strong>不要把这个账号分享给更多人</strong>——共享账号被转发的范围越大，被锁得越快。</li>
+        </ul>
+        <p>如果你的使用频率较高，反复被锁定会严重影响效率。这种情况下独享账号是唯一稳定的解法：一人一号，不会因为别人的操作波及到你。</p>
+
+        <div class="link-box">
+            <p><strong>👉 取用最新可用账号：</strong> <a href="https://id.tangping.icu/">小火箭共享账号实时可用列表</a> —— 首页逐条显示账号当前状态，点「显示密码」直接复制，拿到的永远是最新密码，不必翻找已失效的旧密码。</p>
+            <p><strong>📖 配套阅读：</strong> <a href="https://id.tangping.icu/faq">常见问题</a> ｜ <a href="https://id.tangping.icu/guide">完整下载教程</a> ｜ <a href="https://id.tangping.icu/safety">安全说明</a></p>
+            <p><strong>💎 不想再挑号：</strong> <a href="https://gg.tangping.icu/">苹果 ID 批发零售小铺</a> —— 独享账号，可自行修改密码、长期稳定。</p>
+            <p><strong>🔗 同类报错：</strong> <a href="https://leo-bot66.github.io/-id-/error/password/">密码不正确</a> ｜ <a href="https://leo-bot66.github.io/-id-/error/verification/">需要验证 / 双重认证</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a></p>
+        </div>
+
+        <div class="foot">
+            <p>相关页面：<a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> ｜ <a href="https://leo-bot66.github.io/-id-/safe/">安全使用指南</a> ｜ <a href="https://leo-bot66.github.io/-id-/clients/">其他客户端下载指南</a></p>
+        </div>
+    </div>
+</body>
+</html>
