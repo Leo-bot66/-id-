@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>共享 Apple ID 报错排查手册｜密码错误 / 需要验证 / 已锁定 / 无法下载</title>
+    <meta name="description" content="共享 Apple ID 出现「密码错误」「账号已锁定」「此 Apple ID 已被停用」「需要验证」「尚未在 App Store 使用过」「搜索不到应用」分别怎么处理？本文按报错逐条给出原因判断与处理步骤，并附速查表。">
+    <meta name="keywords" content="共享Apple ID密码错误,Apple ID已锁定,Apple ID已被停用,共享账号需要验证,小火箭共享账号报错,Apple ID无法下载应用">
+    <link rel="canonical" href="https://leo-bot66.github.io/-id-/troubleshoot/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="共享 Apple ID 报错排查手册｜密码错误 / 需要验证 / 已锁定 / 无法下载">
+    <meta property="og:description" content="按报错逐条给出原因判断与处理步骤，附排查速查表。">
+    <meta property="og:url" content="https://leo-bot66.github.io/-id-/troubleshoot/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"提示「Apple ID 或密码不正确」怎么办？","acceptedAnswer":{"@type":"Answer","text":"共享账号密码会被系统定期轮换，你手上的是旧密码。请回到账号获取页取用最新密码；仍失败则换用另一个账号，不要反复重试以免触发安全锁定。"}},
+        {"@type":"Question","name":"提示「此 Apple ID 已被锁定 / 已停用」怎么办？","acceptedAnswer":{"@type":"Answer","text":"这是共享账号被多人登录后触发的 Apple 风控。自己无法解锁，也不建议尝试找回。直接换用另一个可用账号即可。"}},
+        {"@type":"Question","name":"提示需要验证、要求受信任设备或双重认证怎么办？","acceptedAnswer":{"@type":"Answer","text":"说明该账号已进入安全验证状态，普通用户无法绕过。请换用账号列表中状态正常的其他账号。"}},
+        {"@type":"Question","name":"搜索不到应用、或提示需要付费购买怎么办？","acceptedAnswer":{"@type":"Answer","text":"说明该账号的购买记录没有同步到当前区域，或该账号并未购买此应用。请点击 App Store 右上角头像进入「已购项目」中查找；仍没有则换账号。"}}
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.7; color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white;
+            border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.2); padding: 40px;
+        }
+        nav.crumb { font-size: .92em; color: #888; margin-bottom: 18px; }
+        nav.crumb a { color: #667eea; text-decoration: none; }
+        nav.crumb a:hover { text-decoration: underline; }
+        h1 { color: #667eea; margin-bottom: 10px; font-size: 2em; line-height: 1.3; }
+        .subtitle { color: #666; font-size: 1.03em; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #eee; }
+        h2 { color: #667eea; margin-top: 34px; margin-bottom: 14px; font-size: 1.5em; border-left: 4px solid #667eea; padding-left: 15px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: 1.1em; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 10px 0 14px 24px; }
+        li { margin-bottom: 7px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ff6b6b; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .warning strong { color: #d63031; }
+        .ok { background: #eaf7ef; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .ok strong { color: #1e8449; }
+        .link-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 26px 0; border: 1px solid #e9ecef; }
+        .link-box a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .link-box a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .95em; }
+        th, td { border: 1px solid #e3e6ea; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #f4f6fb; color: #444; }
+        .foot { margin-top: 34px; padding-top: 18px; border-top: 1px solid #eee; color: #888; font-size: .9em; }
+        .foot a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) { .container { padding: 24px 18px; } h1 { font-size: 1.55em; } h2 { font-size: 1.28em; } table { font-size: .86em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="crumb"><a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> &rsaquo; 报错排查手册</nav>
+
+        <h1>共享 Apple ID 报错排查手册：密码错误 / 需要验证 / 已锁定 / 无法下载</h1>
+        <p class="subtitle">共享账号出问题的九成原因是同一个：<strong>账号被多人使用后触发了 Apple 风控</strong>。这篇按报错原文逐条给出判断与处理动作，让你三分钟内解决。</p>
+
+        <h2>一、先记住三条排查原则</h2>
+        <ol>
+            <li><strong>先换号，再排查。</strong> 共享账号池里通常有多个可用账号，换一个往往比研究报错更快。</li>
+            <li><strong>不要反复重试同一个账号。</strong> 连续输错密码会加速触发 Apple 的安全锁定，让本可恢复的账号彻底不可用。</li>
+            <li><strong>区分「账号问题」与「节点问题」。</strong> 搜不到、下不了 → 账号问题；下好了连不上 → 节点或订阅问题，与账号无关。</li>
+        </ol>
+
+        <h2>二、报错逐条处理</h2>
+
+        <h3>1. 「Apple ID 或密码不正确」</h3>
+        <p><strong>原因：</strong>共享账号密码会被系统定期轮换，你手上的是上一轮的旧密码。这是最常见、也最容易误判为「账号废了」的情况。</p>
+        <p><strong>处理：</strong>回到账号获取页取用<strong>当前</strong>密码（不要用文档或聊天记录里的旧密码）。若列表页显示密码但登录仍失败，直接换下一个账号。</p>
+
+        <h3>2. 「此 Apple ID 已被锁定」/「此 Apple ID 已被停用」</h3>
+        <p><strong>原因：</strong>账号被多人、多地同时登录，Apple 判定异常后自动锁定。属共享账号的固有风险，无法从客户端侧规避。</p>
+        <p><strong>处理：</strong>换账号。自己尝试「解锁 / 找回」没有意义，除了浪费时间还可能让账号状态更差。</p>
+
+        <h3>3. 「需要验证」/ 要求受信任设备 / 要求双重认证</h3>
+        <p><strong>原因：</strong>该账号已进入安全验证状态，验证码会发往账号持有者的设备或手机号——<strong>你没有权限拿到</strong>。</p>
+        <p><strong>处理：</strong>换账号。这一步没有任何技巧可绕过，不要相信声称能「帮你解验证」的第三方。</p>
+
+        <h3>4. 「此 Apple ID 尚未在 App Store 使用过」</h3>
+        <p><strong>原因：</strong>这是<strong>首次登录的正常提示</strong>，不是报错。</p>
+        <p><strong>处理：</strong>点「检查」→ 同意条款与条件 → 继续即可。若被要求填写付款方式，选择「无」。</p>
+
+        <h3>5. 搜索不到应用 / 提示需要付费购买</h3>
+        <p><strong>原因：</strong>两种可能——（1）该账号并未购买此应用；（2）购买记录未同步到当前区域。</p>
+        <p><strong>处理：</strong>点击 App Store 右上角头像 → 进入<strong>「已购项目」</strong>→ 在其中搜索应用名称下载。若仍没有，换账号。</p>
+
+        <h3>6. 「无法连接 App Store」/ 一直转圈</h3>
+        <p><strong>原因：</strong>多为网络环境问题（本地网络、代理或系统时间异常），而不是账号被停用。</p>
+        <p><strong>处理：</strong>依次尝试——切换网络（Wi-Fi ↔ 蜂窝）；关闭当前代理后重试；检查「设置 → 通用 → 日期与时间」是否开启自动设置。</p>
+
+        <h3>7. 下载完仍显示为未购买 / 灰色图标</h3>
+        <p><strong>原因：</strong>下载中断或账号在下载完成前被退出。</p>
+        <p><strong>处理：</strong>重新登录该共享账号，到「已购项目」中点击云下载图标重新下载。</p>
+
+        <h2>三、速查表（按报错原文找答案）</h2>
+        <table>
+            <tr><th>报错原文</th><th>性质</th><th>动作</th></tr>
+            <tr><td>Apple ID 或密码不正确</td><td>密码已轮换</td><td>取最新密码 → 仍失败则换号</td></tr>
+            <tr><td>此 Apple ID 已被锁定 / 已被停用</td><td>Apple 风控</td><td>换号</td></tr>
+            <tr><td>需要验证 / 双重认证 / 受信任设备</td><td>安全验证</td><td>换号（无法绕过）</td></tr>
+            <tr><td>尚未在 App Store 使用过</td><td>正常提示</td><td>点「检查」→ 同意条款</td></tr>
+            <tr><td>搜索不到 / 需要付费</td><td>无购买记录</td><td>「已购项目」中查找 → 换号</td></tr>
+            <tr><td>无法连接 App Store</td><td>网络问题</td><td>换网络 / 关代理 / 校时</td></tr>
+            <tr><td>下好了打开连不上</td><td>节点问题</td><td>导入有效订阅，与账号无关</td></tr>
+        </table>
+
+        <div class="ok">
+            <strong>✅ 三分钟解决法</strong>
+            <p style="margin-top:10px;">报错 → 看速查表 → 若是「换号」类，直接去<a href="https://id.tangping.icu/">账号列表</a>取下一个状态正常的账号。绝大多数问题在换号后就消失了。</p>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ 不要做的事</strong>
+            <ul style="margin-top:10px;">
+                <li>不要为共享账号充值、绑卡或修改资料——改密会导致其他人（包括你）无法登录。</li>
+                <li>不要相信「付费帮解锁/解验证」的服务，共享账号无法解验证是机制决定的。</li>
+                <li>不要把共享账号登录进「设置 → iCloud」，这是唯一会造成真实损失的误操作。</li>
+            </ul>
+        </div>
+
+        <h2>四、如果频繁遇到报错</h2>
+        <p>共享账号命中风控，本质原因是<strong>同一个账号被大量陌生用户轮流登录</strong>。频率取决于账号池的健康度，你无法从客户端侧改变。若你希望「打开就能用、不用挑号」，应改用独享账号。</p>
+
+        <div class="link-box">
+            <p><strong>👉 取用最新可用账号：</strong> <a href="https://id.tangping.icu/">小火箭共享账号实时可用列表</a> —— 每条显示当前状态，点「显示密码」直接复制，永远拿到的是最新密码。</p>
+            <p><strong>📖 配套阅读：</strong> <a href="https://id.tangping.icu/faq">常见问题</a> ｜ <a href="https://leo-bot66.github.io/-id-/safe/">共享 Apple ID 安全使用指南</a> ｜ <a href="https://id.tangping.icu/guide">完整下载教程</a></p>
+            <p><strong>💎 不想再挑号：</strong> <a href="https://gg.tangping.icu/">苹果 ID 批发零售小铺</a> —— 独享账号，自己改密码、长期稳定。</p>
+        </div>
+
+        <div class="foot">
+            <p>相关页面：<a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> ｜ <a href="https://leo-bot66.github.io/-id-/safe/">安全使用指南</a> ｜ <a href="https://leo-bot66.github.io/-id-/clients/">其他客户端下载指南</a></p>
+        </div>
+    </div>
+</body>
+</html>
