@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>共享 Apple ID 安全使用指南｜为什么只能登录 App Store、如何避免锁机</title>
+    <meta name="description" content="共享 Apple ID 为什么会导致锁机？本文讲清原理与正确操作流程：只能在 App Store 登录、不要登录 iCloud、下载后如何正确退出账号，并附登录前中后自查清单与已误登录的补救办法。">
+    <meta name="keywords" content="共享Apple ID安全,共享苹果ID锁机,共享账号登录iCloud,小火箭共享账号安全,Apple ID退出登录,苹果ID共享风险">
+    <link rel="canonical" href="https://leo-bot66.github.io/-id-/safe/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="共享 Apple ID 安全使用指南｜为什么只能登录 App Store、如何避免锁机">
+    <meta property="og:description" content="讲清共享 Apple ID 的锁机原理与正确登录/退出流程，附自查清单。">
+    <meta property="og:url" content="https://leo-bot66.github.io/-id-/safe/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"为什么共享 Apple ID 会导致手机被锁？","acceptedAnswer":{"@type":"Answer","text":"锁机不是共享账号本身的问题，而是登录位置的问题。一旦在「设置 - iCloud」登录他人账号并开启「查找我的 iPhone」，账号持有者就能远程锁定或抹除设备。只在 App Store 登录不会触发该机制。"}},
+        {"@type":"Question","name":"只在 App Store 登录共享账号，安全吗？","acceptedAnswer":{"@type":"Answer","text":"相对安全。App Store 登录只共享购买记录，不涉及设备绑定、通讯录、照片与备份。仍建议：不充值、不修改账号资料、下载完立即退出。"}},
+        {"@type":"Question","name":"已经登录了 iCloud，怎么补救？","acceptedAnswer":{"@type":"Answer","text":"立即在「设置 - 你的名字」中退出登录；若提示需要密码而密码已被轮换，请勿反复尝试，可先备份数据再联系账号提供方。切勿在此时充值或绑定支付方式。"}},
+        {"@type":"Question","name":"下载完退出账号，已下载的应用会失效吗？","acceptedAnswer":{"@type":"Answer","text":"不会。应用已安装在本机，可正常使用；仅在需要更新该应用时，才需重新登录对应账号。"}}
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.7; color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white;
+            border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.2); padding: 40px;
+        }
+        nav.crumb { font-size: .92em; color: #888; margin-bottom: 18px; }
+        nav.crumb a { color: #667eea; text-decoration: none; }
+        nav.crumb a:hover { text-decoration: underline; }
+        h1 { color: #667eea; margin-bottom: 10px; font-size: 2em; line-height: 1.3; }
+        .subtitle { color: #666; font-size: 1.03em; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #eee; }
+        h2 { color: #667eea; margin-top: 34px; margin-bottom: 14px; font-size: 1.5em; border-left: 4px solid #667eea; padding-left: 15px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: 1.1em; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 10px 0 14px 24px; }
+        li { margin-bottom: 7px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ff6b6b; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .warning strong { color: #d63031; }
+        .ok { background: #eaf7ef; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .ok strong { color: #1e8449; }
+        .link-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 26px 0; border: 1px solid #e9ecef; }
+        .link-box a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .link-box a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .95em; }
+        th, td { border: 1px solid #e3e6ea; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #f4f6fb; color: #444; }
+        .foot { margin-top: 34px; padding-top: 18px; border-top: 1px solid #eee; color: #888; font-size: .9em; }
+        .foot a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) { .container { padding: 24px 18px; } h1 { font-size: 1.55em; } h2 { font-size: 1.28em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="crumb"><a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> &rsaquo; 共享 Apple ID 安全使用指南</nav>
+
+        <h1>共享 Apple ID 安全使用指南：为什么只能登录 App Store、如何避免锁机</h1>
+        <p class="subtitle">网上关于「共享苹果 ID 锁机」的传闻大多是真的，但原因几乎都不是账号共享本身，而是<strong>登录位置错了</strong>。这篇把原理、正确流程和补救办法一次讲清。</p>
+
+        <h2>一、一句话结论</h2>
+        <p><strong>只登录 App Store，不登录 iCloud，共享账号几乎不会让你锁机。</strong> 反过来，一旦在「设置 → iCloud」登录了别人的账号，「查找我的 iPhone」就会被激活到这个账号上，账号持有者随时可以远程锁定或抹除你的设备。</p>
+
+        <h2>二、锁机是怎么发生的（原理）</h2>
+        <ol>
+            <li>你在「设置 → 你的名字（iCloud）」里登录了一个非本人的 Apple ID。</li>
+            <li>系统随之把「查找我的 iPhone」与这个账号绑定。</li>
+            <li>账号持有者在任意设备登录该 Apple ID，就能看到你的设备位置，并执行「丢失模式」「抹掉设备」。</li>
+            <li>抹掉后设备进入「激活锁」状态，必须输入该 Apple ID 的账号密码才能重新激活——而此时密码早已被更换或遗忘。</li>
+        </ol>
+        <div class="warning">
+            <strong>⚠️ 关键区别：App Store 与 iCloud 是两个不同的登录入口</strong>
+            <p style="margin-top:10px;">App Store 登录：只共享「购买记录」，用于下载已购应用，<strong>不绑定设备、不涉及通讯录 / 照片 / 备份</strong>。</p>
+            <p>iCloud 登录：绑定设备、同步全部个人数据，并激活「查找我的 iPhone」——<strong>这才是锁机的入口</strong>。</p>
+        </div>
+
+        <h2>三、正确操作流程（照做即可）</h2>
+        <h3>1. 登录（只走 App Store）</h3>
+        <ul>
+            <li>打开【App Store】→ 点击右上角头像 → 滑到底部「退出登录」（先清掉自己的账号）。</li>
+            <li>在同一位置输入共享账号与密码登录。</li>
+            <li>若弹出「此 Apple ID 尚未在 App Store 使用过」，点「检查」并同意条款即可，属正常提示。</li>
+        </ul>
+        <h3>2. 下载</h3>
+        <ul>
+            <li>在 App Store 搜索目标应用并下载。若搜索不到，进「已购项目」里直接搜索该应用名称下载。</li>
+            <li>下载完成后<strong>不要</strong>点开应用内的任何账号相关设置。</li>
+        </ul>
+        <h3>3. 退出（下载完立刻做）</h3>
+        <ul>
+            <li>回到【App Store】→ 右上角头像 → 滑到底部「退出登录」。</li>
+            <li>然后重新登录你自己的 Apple ID。已下载的应用仍然保留，可正常使用。</li>
+        </ul>
+        <div class="ok">
+            <strong>✅ 判断是否安全登录的唯一标准</strong>
+            <p style="margin-top:10px;">登录时如果界面是<strong>蓝色背景的 App Store 界面</strong>，正确；如果出现「iCloud」「备份」「查找我的 iPhone」等字样，<strong>立刻退出</strong>。</p>
+        </div>
+
+        <h2>四、登录前 / 中 / 后 自查清单</h2>
+        <table>
+            <tr><th>阶段</th><th>检查项</th></tr>
+            <tr><td>登录前</td><td>已在「设置 → 你的名字」确认当前未登录其他账号；已知晓只登录 App Store</td></tr>
+            <tr><td>登录中</td><td>弹出的确实是 App Store 登录框；不勾选任何「同步 / 备份」类选项；不充值、不添加付款方式</td></tr>
+            <tr><td>登录后</td><td>下载完成后立即退出；回到自己的账号；确认「设置 → 你的名字」仍是自己的 Apple ID</td></tr>
+        </table>
+
+        <h2>五、已经误登录了 iCloud，怎么办</h2>
+        <ol>
+            <li><strong>立即退出</strong>：「设置 → 你的名字」→ 滑到底部「退出登录」。</li>
+            <li>若提示需要输入密码而密码已失效：不要反复试，避免触发安全锁定；先备份重要数据（照片、通讯录）。</li>
+            <li><strong>不要</strong>在此期间充值、绑定银行卡或开通 iCloud+，避免资金与账号绑定风险。</li>
+            <li>若已出现「丢失模式」提示，保留截图，联系账号提供方或 Apple 支持说明情况。</li>
+        </ol>
+
+        <h2>六、三个常见误解</h2>
+        <ul>
+            <li><strong>误解一：共享账号本身就是骗局。</strong> 共享账号是一个长期存在的用法，风险高低完全取决于你把它登录在哪里。</li>
+            <li><strong>误解二：退出账号后已下载的应用会失效。</strong> 不会。应用已安装在本机；只有「更新」该应用时才需要重新登录对应账号。</li>
+            <li><strong>误解三：改掉密码就能把账号据为己有。</strong> 不能，也不建议。共享账号会被系统定期轮换密码，改动只会导致其他使用者无法登录。</li>
+        </ul>
+
+        <div class="link-box">
+            <p><strong>👉 需要可用的共享账号：</strong> <a href="https://id.tangping.icu/">小火箭共享账号实时可用列表</a> —— 首页逐条显示每个账号的当前状态，点「显示密码」即可复制，无需在文档里翻找已失效的旧密码。</p>
+            <p><strong>📖 配套阅读：</strong> <a href="https://id.tangping.icu/guide">共享 Apple ID 使用教程</a> ｜ <a href="https://id.tangping.icu/faq">常见问题</a> ｜ <a href="https://id.tangping.icu/safety">安全说明</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a></p>
+            <p><strong>💎 想长期稳定使用：</strong> <a href="https://gg.tangping.icu/">苹果 ID 批发零售小铺</a> —— 独享账号可自行修改密码，不受共享风控影响。</p>
+        </div>
+
+        <div class="foot">
+            <p>相关页面：<a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> ｜ <a href="https://leo-bot66.github.io/-id-/clients/">其他客户端下载指南</a></p>
+        </div>
+    </div>
+</body>
+</html>
