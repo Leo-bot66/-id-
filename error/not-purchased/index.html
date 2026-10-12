@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>登了共享账号却搜索不到应用、提示需要付费？原因与解决</title>
+    <meta name="description" content="已经登录共享 Apple ID，但 App Store 里搜索不到 Shadowrocket，或点击时仍要求付费购买。本文说明「已购项目」的正确用法、购买记录不同步的原因，以及区分账号问题与节点问题的方法。">
+    <meta name="keywords" content="App Store搜索不到小火箭,共享账号需要付费,已购项目怎么下载,小火箭需要购买,共享Apple ID下载不了">
+    <link rel="canonical" href="https://leo-bot66.github.io/-id-/error/not-purchased/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="登了共享账号却搜索不到应用、提示需要付费？原因与解决">
+    <meta property="og:description" content="已经登录共享 Apple ID，但 App Store 里搜索不到 Shadowrocket，或点击时仍要求付费购买。本文说明「已购项目」的正确用法、购买记录不同步的原因，以及区分账号问题与节点问题的方法。">
+    <meta property="og:url" content="https://leo-bot66.github.io/-id-/error/not-purchased/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"为什么登录了共享账号，搜索小火箭还要付费？","acceptedAnswer":{"@type":"Answer","text":"说明该账号的购买记录没有在当前环境生效。正确做法是点 App Store 右上角头像进入「已购项目」，在其中搜索该应用并点击云朵图标下载，而不是在商店搜索页直接购买。"}},
+        {"@type":"Question","name":"在「已购项目」里也找不到怎么办？","acceptedAnswer":{"@type":"Answer","text":"说明这个账号并未购买过该应用，或购买记录已被 Apple 清除。直接换用账号列表中的其他账号即可。"}},
+        {"@type":"Question","name":"下载好了但打开连不上，是账号问题吗？","acceptedAnswer":{"@type":"Answer","text":"不是。这类客户端只是工具外壳，本身不含节点。搜不到、下不了属于账号问题；下好了连不上属于节点或订阅问题，两者要分开排查。"}}
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.7; color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white;
+            border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.2); padding: 40px;
+        }
+        nav.crumb { font-size: .92em; color: #888; margin-bottom: 18px; }
+        nav.crumb a { color: #667eea; text-decoration: none; }
+        nav.crumb a:hover { text-decoration: underline; }
+        h1 { color: #667eea; margin-bottom: 10px; font-size: 1.95em; line-height: 1.3; }
+        .subtitle { color: #666; font-size: 1.03em; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #eee; }
+        h2 { color: #667eea; margin-top: 34px; margin-bottom: 14px; font-size: 1.45em; border-left: 4px solid #667eea; padding-left: 15px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: 1.1em; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 10px 0 14px 24px; }
+        li { margin-bottom: 7px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ff6b6b; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .warning strong { color: #d63031; }
+        .ok { background: #eaf7ef; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .ok strong { color: #1e8449; }
+        .quote { background: #f1f3f9; border-left: 4px solid #667eea; padding: 12px 15px; margin: 16px 0; border-radius: 5px; color: #444; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .95em; }
+        .link-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 26px 0; border: 1px solid #e9ecef; }
+        .link-box a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .link-box a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .95em; }
+        th, td { border: 1px solid #e3e6ea; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #f4f6fb; color: #444; }
+        .foot { margin-top: 34px; padding-top: 18px; border-top: 1px solid #eee; color: #888; font-size: .9em; }
+        .foot a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) { .container { padding: 24px 18px; } h1 { font-size: 1.5em; } h2 { font-size: 1.24em; } table { font-size: .86em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="crumb"><a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> &rsaquo; <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> &rsaquo; 搜索不到 / 需要付费</nav>
+
+
+        <h1>搜索不到应用、提示需要付费怎么办？</h1>
+        <p class="subtitle">「共享账号不是买过小火箭吗，为什么还让我付钱？」——这是第二常见的困惑。答案通常是：<strong>你走错了下载入口</strong>。正确入口不是商店搜索页，而是「已购项目」。</p>
+
+        <h2>一、两种典型表现</h2>
+        <ul>
+            <li><strong>表现 A：</strong>在 App Store 里直接搜不到应用，或搜到的是同名仿冒品。</li>
+            <li><strong>表现 B：</strong>搜到了应用，但点开显示的按钮是价格（如 ¥xx / $x.99）而不是云朵下载图标，点击后要求购买。</li>
+        </ul>
+        <p>两种表现的根因相同：<strong>当前会话没有应用到该账号的购买记录。</strong></p>
+
+        <h2>二、正确下载方式：走「已购项目」</h2>
+        <ol>
+            <li>确认已用共享账号登录【App Store】（右上角头像处显示的是该账号）。</li>
+            <li>点击右上角<strong>头像</strong> → 进入<strong>「已购项目」</strong>。</li>
+            <li>在「已购项目」页面顶部搜索框输入应用名称。</li>
+            <li>找到后点击<strong>云朵下载图标</strong>，即可免费获取——因为该账号此前已购买过。</li>
+        </ol>
+        <div class="ok">
+            <strong>✅ 关键区别</strong>
+            <p style="margin-top:10px;"><strong>商店搜索页</strong>展示的是「当前标价」，与你的购买记录无关；<strong>已购项目</strong>展示的是「这个账号买过什么」。共享账号的原理只在后者生效。</p>
+        </div>
+
+        <h2>三、「已购项目」里也没有，说明什么</h2>
+        <table>
+            <tr><th>现象</th><th>含义</th><th>动作</th></tr>
+            <tr><td>已购项目里能找到，但下载报错</td><td>网络或 App Store 会话问题</td><td>退出账号重新登录；或换网络重试</td></tr>
+            <tr><td>已购项目里<strong>找不到</strong>该应用</td><td>该账号未购买过，或购买记录已被清除</td><td><strong>换账号</strong></td></tr>
+            <tr><td>多个账号都找不到</td><td>账号池正处于风控期</td><td>稍后再取，或改用独享账号</td></tr>
+        </table>
+
+        <h2>四、别被仿冒应用骗了</h2>
+        <div class="warning">
+            <strong>⚠️ 认准正版</strong>
+            <p style="margin-top:10px;">App Store 里存在大量名称相似的山寨应用，图标与名称刻意模仿。下载前请点开应用详情，核对<strong>开发者名称、评分数量、更新日期</strong>；价格异常低、评论稀少、开发者名陌生的，不要安装。</p>
+        </div>
+
+        <h2>五、区分「账号问题」与「节点问题」</h2>
+        <p>很多人把两件事混为一谈，导致反复换账号却没有效果：</p>
+        <ul>
+            <li><strong>搜不到 / 下不了 / 要求付费</strong> → <strong>账号问题</strong>。按上面的方法走「已购项目」，或换账号。</li>
+            <li><strong>下载好了、能打开，但连不上网</strong> → <strong>节点问题</strong>。这类客户端只是工具外壳，必须先导入有效的节点订阅才能使用，和账号毫无关系。</li>
+        </ul>
+        <p>若你属于后者，问题不在共享账号，而在订阅是否有效、节点是否在线。</p>
+
+        <div class="link-box">
+            <p><strong>👉 取用最新可用账号：</strong> <a href="https://id.tangping.icu/">小火箭共享账号实时可用列表</a> —— 首页逐条显示账号当前状态，点「显示密码」直接复制，拿到的永远是最新密码，不必翻找已失效的旧密码。</p>
+            <p><strong>📖 配套阅读：</strong> <a href="https://id.tangping.icu/faq">常见问题</a> ｜ <a href="https://id.tangping.icu/guide">完整下载教程</a> ｜ <a href="https://id.tangping.icu/safety">安全说明</a></p>
+            <p><strong>💎 不想再挑号：</strong> <a href="https://gg.tangping.icu/">苹果 ID 批发零售小铺</a> —— 独享账号，可自行修改密码、长期稳定。</p>
+            <p><strong>🔗 同类报错：</strong> <a href="https://leo-bot66.github.io/-id-/error/app-store-connect/">无法连接 App Store</a> ｜ <a href="https://leo-bot66.github.io/-id-/error/password/">密码不正确</a> ｜ <a href="https://leo-bot66.github.io/-id-/clients/quantumult-x/">Quantumult X 下载指南</a></p>
+        </div>
+
+        <div class="foot">
+            <p>相关页面：<a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> ｜ <a href="https://leo-bot66.github.io/-id-/safe/">安全使用指南</a> ｜ <a href="https://leo-bot66.github.io/-id-/clients/">其他客户端下载指南</a></p>
+        </div>
+    </div>
+</body>
+</html>
