@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quantumult X 下载与共享账号使用指南（iOS）</title>
+    <meta name="description" content="Quantumult X 已从中国区 App Store 下架，需用外区已购账号才能下载。本文说明它与小火箭的区别、用共享 Apple ID 下载的正确流程、配置订阅的基本步骤，以及它与 Shadowrocket 该怎么选。">
+    <meta name="keywords" content="Quantumult X下载,QuantumultX共享账号,Quantumult X教程,QuantumultX怎么下载,quan x 下载">
+    <link rel="canonical" href="https://leo-bot66.github.io/-id-/clients/quantumult-x/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Quantumult X 下载与共享账号使用指南（iOS）">
+    <meta property="og:description" content="Quantumult X 已从中国区 App Store 下架，需用外区已购账号才能下载。本文说明它与小火箭的区别、用共享 Apple ID 下载的正确流程、配置订阅的基本步骤，以及它与 Shadowrocket 该怎么选。">
+    <meta property="og:url" content="https://leo-bot66.github.io/-id-/clients/quantumult-x/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Quantumult X 和小火箭该选哪个？","acceptedAnswer":{"@type":"Answer","text":"如果只是要「能连、能上」，Shadowrocket 上手更快、价格更低；Quantumult X 的优势在规则引擎与脚本能力，但配置门槛明显更高。不确定时优先选小火箭。"}},
+        {"@type":"Question","name":"Quantumult X 能通过共享账号免费下载吗？","acceptedAnswer":{"@type":"Answer","text":"可以，前提是该共享账号已经购买过 Quantumult X。下载方式与其它付费应用一致：登录 App Store → 进入「已购项目」→ 搜索应用名 → 点击云朵图标下载。"}},
+        {"@type":"Question","name":"为什么下载完打开是空的？","acceptedAnswer":{"@type":"Answer","text":"Quantumult X 本身不含任何节点，必须先从服务商处获取订阅地址并导入，才有可用节点。"}}
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.7; color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white;
+            border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.2); padding: 40px;
+        }
+        nav.crumb { font-size: .92em; color: #888; margin-bottom: 18px; }
+        nav.crumb a { color: #667eea; text-decoration: none; }
+        nav.crumb a:hover { text-decoration: underline; }
+        h1 { color: #667eea; margin-bottom: 10px; font-size: 1.95em; line-height: 1.3; }
+        .subtitle { color: #666; font-size: 1.03em; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #eee; }
+        h2 { color: #667eea; margin-top: 34px; margin-bottom: 14px; font-size: 1.45em; border-left: 4px solid #667eea; padding-left: 15px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: 1.1em; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 10px 0 14px 24px; }
+        li { margin-bottom: 7px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ff6b6b; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .warning strong { color: #d63031; }
+        .ok { background: #eaf7ef; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .ok strong { color: #1e8449; }
+        .quote { background: #f1f3f9; border-left: 4px solid #667eea; padding: 12px 15px; margin: 16px 0; border-radius: 5px; color: #444; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .95em; }
+        .link-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 26px 0; border: 1px solid #e9ecef; }
+        .link-box a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .link-box a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .95em; }
+        th, td { border: 1px solid #e3e6ea; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #f4f6fb; color: #444; }
+        .foot { margin-top: 34px; padding-top: 18px; border-top: 1px solid #eee; color: #888; font-size: .9em; }
+        .foot a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) { .container { padding: 24px 18px; } h1 { font-size: 1.5em; } h2 { font-size: 1.24em; } table { font-size: .86em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="crumb"><a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> &rsaquo; <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> &rsaquo; Quantumult X</nav>
+
+
+        <h1>Quantumult X 下载与共享账号使用指南</h1>
+        <p class="subtitle">Quantumult X（俗称圈 X）是 iOS 上另一款主流代理客户端。它比小火箭强，也比小火箭难。<strong>在折腾之前，先确认你真的需要它。</strong></p>
+
+        <h2>一、先想清楚：你需要 Quantumult X 吗</h2>
+        <table>
+            <tr><th>对比项</th><th>Shadowrocket（小火箭）</th><th>Quantumult X</th></tr>
+            <tr><td>上手难度</td><td>低，导入订阅即可用</td><td>较高，规则、策略组、脚本都需要手动理解</td></tr>
+            <tr><td>分流规则能力</td><td>够用</td><td>更强，支持更细的策略与重写</td></tr>
+            <tr><td>脚本 / 自动化</td><td>有限</td><td>体系完整</td></tr>
+            <tr><td>适合谁</td><td>绝大多数普通用户</td><td>愿意花时间研究配置的进阶用户</td></tr>
+        </table>
+        <p><strong>结论：如果你只是要「能连、能上」，装小火箭就够了。</strong>Quantumult X 的价值只有在复杂分流和脚本需求下才体现得出来，否则你会花大量时间在配置上而不是使用上。</p>
+
+        <h2>二、为什么必须用外区 Apple ID</h2>
+        <ul>
+            <li>Quantumult X 是<strong>付费应用</strong>，且<strong>已从中国区 App Store 下架</strong>，中国区账号连搜索都搜不到。</li>
+            <li>付费应用不能靠「登录一下就白拿」——<strong>必须该账号此前购买过</strong>，才能在「已购项目」中重复下载。</li>
+        </ul>
+        <p>共享账号正是利用这一点：账号持有者已付过费，你把账号登录到 App Store 后，「已购项目」里就带上了 Quantumult X。</p>
+
+        <h2>三、用共享账号下载的正确流程</h2>
+        <ol>
+            <li>【App Store】→ 右上角头像 → 滑到底部<strong>「退出登录」</strong>，先清掉自己的账号。</li>
+            <li>在<strong>同一位置</strong>登录共享 Apple ID。（<strong>只在这里登录，不要进「设置 → iCloud」</strong>——那是唯一会造成真实损失的误操作。）</li>
+            <li>回到<strong>头像 → 「已购项目」</strong>，在顶部搜索框输入 <em>Quantumult X</em>。</li>
+            <li>找到后点击<strong>云朵下载图标</strong>下载。（不要在商店搜索页点价格按钮，那会走购买流程。）</li>
+            <li>下载完成后立即【App Store → 头像 → 退出登录】，换回你自己的 Apple ID。已下载的应用仍然保留。</li>
+        </ol>
+        <div class="warning">
+            <strong>⚠️ 认准正版，别下仿冒</strong>
+            <p style="margin-top:10px;">App Store 里存在名称近似的山寨客户端。下载前点开详情，核对<strong>开发者名称、评分数量与更新记录</strong>。</p>
+        </div>
+
+        <h2>四、下载完打不开 / 连不上？</h2>
+        <p>这与账号无关。Quantumult X 只是<strong>工具外壳，本身不含任何节点</strong>。你需要：</p>
+        <ol>
+            <li>从服务商处取得<strong>订阅地址</strong>；</li>
+            <li>在客户端内找到「订阅 / 节点」相关页面，粘贴地址并拉取；</li>
+            <li>拉取成功后选择一个节点，开启代理开关。</li>
+        </ol>
+        <p>若拉取失败：先确认订阅是否过期、节点是否在线，再排查网络环境。若「已购项目」里搜不到应用，则是账号问题——换账号。</p>
+        <div class="ok">
+            <strong>✅ 一句话区分</strong>
+            <p style="margin-top:10px;"><strong>搜不到 / 下不了</strong> → 账号问题；<strong>下好了连不上</strong> → 节点或订阅问题。</p>
+        </div>
+
+        <h2>五、常见问题</h2>
+        <h3>登录后提示「此 Apple ID 尚未在 App Store 使用过」</h3>
+        <p>属正常首次提示，点「检查」→ 同意条款与条件 → 继续；若要求填写付款方式，选择「无」。</p>
+        <h3>提示「需要验证」「双重认证」</h3>
+        <p>该账号已进入 Apple 安全验证状态，验证码发往账号持有者，你无法获取。<strong>直接换号</strong>。</p>
+        <h3>下载后要求内购解锁</h3>
+        <p>正版 Quantumult X 为一次性付费购买，若应用内再要求额外付费解锁核心功能，需警惕是否为仿冒应用，请核对开发者信息。</p>
+
+        <div class="link-box">
+            <p><strong>👉 取用最新可用账号：</strong> <a href="https://id.tangping.icu/">小火箭共享账号实时可用列表</a> —— 首页逐条显示账号当前状态，点「显示密码」直接复制，拿到的永远是最新密码，不必翻找已失效的旧密码。</p>
+            <p><strong>📖 配套阅读：</strong> <a href="https://id.tangping.icu/faq">常见问题</a> ｜ <a href="https://id.tangping.icu/guide">完整下载教程</a> ｜ <a href="https://id.tangping.icu/safety">安全说明</a></p>
+            <p><strong>💎 不想再挑号：</strong> <a href="https://gg.tangping.icu/">苹果 ID 批发零售小铺</a> —— 独享账号，可自行修改密码、长期稳定。</p>
+            <p><strong>🔗 相关页面：</strong> <a href="https://leo-bot66.github.io/-id-/clients/">其他客户端下载指南</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> ｜ <a href="https://leo-bot66.github.io/-id-/safe/">安全使用指南</a></p>
+        </div>
+
+        <div class="foot">
+            <p>相关页面：<a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> ｜ <a href="https://leo-bot66.github.io/-id-/safe/">安全使用指南</a> ｜ <a href="https://leo-bot66.github.io/-id-/clients/">其他客户端下载指南</a></p>
+        </div>
+    </div>
+</body>
+</html>
