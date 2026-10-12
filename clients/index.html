@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quantumult X / Stash 共享账号下载指南｜除小火箭外的 iOS 代理客户端</title>
+    <meta name="description" content="Quantumult X、Stash、Loon、Surge 等 iOS 代理客户端的共享 Apple ID 下载指南：各客户端区别、为什么都需要外区账号、通用下载与退出流程、如何避开仿冒应用，以及下载后的节点配置说明。">
+    <meta name="keywords" content="Quantumult X下载,Stash下载,共享Apple ID下载软件,Loon下载,Surge下载,iOS代理客户端,小火箭共享账号">
+    <link rel="canonical" href="https://leo-bot66.github.io/-id-/clients/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Quantumult X / Stash 共享账号下载指南｜除小火箭外的 iOS 代理客户端">
+    <meta property="og:description" content="除小火箭外，Quantumult X / Stash / Loon 等客户端的共享账号下载流程与避坑要点。">
+    <meta property="og:url" content="https://leo-bot66.github.io/-id-/clients/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Quantumult X 和 Shadowrocket 有什么区别？","acceptedAnswer":{"@type":"Answer","text":"两者都是 iOS 端代理客户端。Shadowrocket 上手更简单、价格更低；Quantumult X 的规则与分流能力更强但配置门槛更高。对普通用户而言，用哪个取决于你已有的节点订阅格式与个人偏好。"}},
+        {"@type":"Question","name":"为什么这些应用在中国区 App Store 搜不到？","acceptedAnswer":{"@type":"Answer","text":"这类代理客户端已从中国区 App Store 下架，因此必须使用美区、港区等外区 Apple ID 登录 App Store 才能搜索与下载。"}},
+        {"@type":"Question","name":"下载后为什么打开是空的、连不上？","acceptedAnswer":{"@type":"Answer","text":"这些客户端本身不含任何节点，只是代理工具外壳。必须先从你的服务商处获取订阅地址，导入后才有节点可用。"}}
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.7; color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white;
+            border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.2); padding: 40px;
+        }
+        nav.crumb { font-size: .92em; color: #888; margin-bottom: 18px; }
+        nav.crumb a { color: #667eea; text-decoration: none; }
+        nav.crumb a:hover { text-decoration: underline; }
+        h1 { color: #667eea; margin-bottom: 10px; font-size: 2em; line-height: 1.3; }
+        .subtitle { color: #666; font-size: 1.03em; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #eee; }
+        h2 { color: #667eea; margin-top: 34px; margin-bottom: 14px; font-size: 1.5em; border-left: 4px solid #667eea; padding-left: 15px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: 1.1em; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 10px 0 14px 24px; }
+        li { margin-bottom: 7px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ff6b6b; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .warning strong { color: #d63031; }
+        .ok { background: #eaf7ef; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .ok strong { color: #1e8449; }
+        .link-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 26px 0; border: 1px solid #e9ecef; }
+        .link-box a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .link-box a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .95em; }
+        th, td { border: 1px solid #e3e6ea; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #f4f6fb; color: #444; }
+        .foot { margin-top: 34px; padding-top: 18px; border-top: 1px solid #eee; color: #888; font-size: .9em; }
+        .foot a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) { .container { padding: 24px 18px; } h1 { font-size: 1.55em; } h2 { font-size: 1.28em; } table { font-size: .88em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="crumb"><a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> &rsaquo; 其他客户端下载指南</nav>
+
+        <h1>Quantumult X / Stash 共享账号下载指南：除小火箭外的 iOS 代理客户端</h1>
+        <p class="subtitle">不是所有人都用小火箭。这篇讲清 Quantumult X、Stash、Loon、Surge 等客户端的差别、为什么它们都需要外区 Apple ID，以及用共享账号下载时的通用流程与避坑要点。</p>
+
+        <h2>一、常见 iOS 代理客户端对比</h2>
+        <p>以下几个都是 iOS 平台上的主流代理客户端，<strong>均为付费应用，且均已从中国区 App Store 下架</strong>。具体售价请以 App Store 当前标价为准。</p>
+        <table>
+            <tr><th>客户端</th><th>特点</th><th>适合谁</th></tr>
+            <tr><td>Shadowrocket（小火箭）</td><td>上手最简单、体积小、价格低，规则与分流够用</td><td>绝大多数普通用户</td></tr>
+            <tr><td>Quantumult X</td><td>规则引擎与脚本能力更强，配置项多、门槛高</td><td>愿意折腾规则与自动化的人</td></tr>
+            <tr><td>Stash</td><td>界面现代、配置方式直观，兼顾规则能力</td><td>想要图形化配置的用户</td></tr>
+            <tr><td>Loon</td><td>插件生态活跃，配置模板多</td><td>偏好插件化玩法的人</td></tr>
+            <tr><td>Surge</td><td>功能最全、价格最高，偏专业与网络调试</td><td>进阶用户 / 网络从业者</td></tr>
+        </table>
+        <p>结论：<strong>如果你只是要「能连、能上」</strong>，Shadowrocket 就够了；只有当你确实需要复杂分流规则或脚本时，才值得为其他客户端付费并折腾配置。</p>
+
+        <h2>二、为什么它们都需要外区 Apple ID</h2>
+        <p>这类代理客户端在中国区 App Store 已经下架，直接用中国区账号搜不到。要下载就必须满足两个条件：</p>
+        <ol>
+            <li>使用<strong>非中国区</strong>的 Apple ID（美区、港区、台区等）；</li>
+            <li>该 Apple ID <strong>曾经购买过这个应用</strong>——付费应用不能靠「登录一下就白拿」，必须是购买记录持有者才能重复下载。</li>
+        </ol>
+        <p>共享账号的原理正是第 2 条：账号持有者已经付过费，你把账号登录到 App Store，「已购项目」里就会带上这些应用。</p>
+
+        <h2>三、通用下载流程（所有客户端通用）</h2>
+        <ol>
+            <li>打开【App Store】→ 右上角头像 → 滑到底部<strong>「退出登录」</strong>，先清掉自己的账号。</li>
+            <li>在同一位置登录共享 Apple ID（<strong>只在这里登录，不要进「设置 → iCloud」</strong>）。</li>
+            <li>若提示「此 Apple ID 尚未在 App Store 使用过」，点「检查」并同意条款，属正常首次提示。</li>
+            <li>搜索目标客户端名称并下载；<strong>若搜不到，进「已购项目」里搜索应用名下载</strong>。</li>
+            <li>下载完成后立即回【App Store】退出登录，换回你自己的 Apple ID。</li>
+        </ol>
+        <div class="warning">
+            <strong>⚠️ 认准正版，别下仿冒应用</strong>
+            <p style="margin-top:10px;">App Store 存在大量名称相似的山寨应用。下载前请点开应用详情，核对<strong>开发者名称、评分数量、更新记录与截图</strong>；价格明显异常、评论稀少的，一律不装。</p>
+        </div>
+
+        <h2>四、下载完打不开 / 连不上？</h2>
+        <p>这是最常见的误解。这些客户端<strong>只是工具外壳，本身不含任何节点</strong>。你必须先从服务商处取得订阅地址，再导入客户端，才有可用节点。</p>
+        <ul>
+            <li>Shadowrocket：首页右上角「+」→ 选择「订阅」→ 粘贴订阅地址 → 更新。</li>
+            <li>Quantumult X / Stash / Loon：一般在「订阅 / 节点」页粘贴订阅地址后拉取。</li>
+            <li>导入后若依旧不通，先确认订阅是否过期、节点是否在线，再排查网络环境。</li>
+        </ul>
+        <div class="ok">
+            <strong>✅ 一句话区分两类问题</strong>
+            <p style="margin-top:10px;"><strong>搜不到 / 下不了</strong> → 账号问题，换可用共享账号即可；<strong>下好了连不上</strong> → 节点或订阅问题，与账号无关。</p>
+        </div>
+
+        <h2>五、共享账号 vs 独享账号，怎么选</h2>
+        <ul>
+            <li><strong>共享账号</strong>：免费、随取随用；缺点是多人在用，Apple 可能触发风控导致提示需要验证，需要换号重试。</li>
+            <li><strong>独享账号</strong>：一人一号，可自行修改密码、开启双重认证，长期稳定；适合把这类工具当日常刚需的人。</li>
+        </ul>
+
+        <div class="link-box">
+            <p><strong>👉 需要可用的共享账号：</strong> <a href="https://id.tangping.icu/">小火箭共享账号实时可用列表</a> —— 首页逐条显示账号当前状态，点「显示密码」即可复制，不必翻找失效的旧密码。</p>
+            <p><strong>📖 配套阅读：</strong> <a href="https://leo-bot66.github.io/-id-/safe/">共享 Apple ID 安全使用指南</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> ｜ <a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a></p>
+            <p><strong>💎 想要独享账号：</strong> <a href="https://gg.tangping.icu/">苹果 ID 批发零售小铺</a> —— 各区域现货，一件也是批发价。</p>
+        </div>
+
+        <div class="foot">
+            <p>关键词：Quantumult X 下载 ｜ Stash 下载 ｜ 共享 Apple ID 下载软件 ｜ iOS 代理客户端 ｜ 小火箭共享账号</p>
+        </div>
+    </div>
+</body>
+</html>
