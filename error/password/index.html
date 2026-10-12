@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>共享 Apple ID 提示「密码不正确」怎么办？原因与解决方法</title>
+    <meta name="description" content="共享 Apple ID 登录时提示「Apple ID 或密码不正确」多半不是账号失效，而是密码已被系统轮换。本文说明原因、正确取密方式、连续失败的安全风险，以及仍失败时的处理顺序。">
+    <meta name="keywords" content="Apple ID或密码不正确,共享Apple ID密码错误,小火箭共享账号密码不对,apple id 密码错误怎么办,共享账号取密">
+    <link rel="canonical" href="https://leo-bot66.github.io/-id-/error/password/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="共享 Apple ID 提示「密码不正确」怎么办？原因与解决方法">
+    <meta property="og:description" content="共享 Apple ID 登录时提示「Apple ID 或密码不正确」多半不是账号失效，而是密码已被系统轮换。本文说明原因、正确取密方式、连续失败的安全风险，以及仍失败时的处理顺序。">
+    <meta property="og:url" content="https://leo-bot66.github.io/-id-/error/password/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"为什么昨天还能用的密码，今天就提示不正确了？","acceptedAnswer":{"@type":"Answer","text":"共享账号密码由系统定期轮换，旧密码会在轮换后立即失效。请回到账号列表页取用当前密码，不要使用聊天记录或文档中保存的旧密码。"}},
+        {"@type":"Question","name":"连续输错几次会有什么后果？","acceptedAnswer":{"@type":"Answer","text":"短时间内多次输错密码会触发 Apple 的安全锁定，使该账号从「暂时不可用」变成「彻底不可用」。所以同一个账号最多试两次，失败立刻换号。"}},
+        {"@type":"Question","name":"是不是这个账号已经废了？","acceptedAnswer":{"@type":"Answer","text":"通常不是。密码不正确只代表你手上的密码过期，不代表账号被停用。换用列表中的其他账号即可正常下载。"}}
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.7; color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white;
+            border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.2); padding: 40px;
+        }
+        nav.crumb { font-size: .92em; color: #888; margin-bottom: 18px; }
+        nav.crumb a { color: #667eea; text-decoration: none; }
+        nav.crumb a:hover { text-decoration: underline; }
+        h1 { color: #667eea; margin-bottom: 10px; font-size: 1.95em; line-height: 1.3; }
+        .subtitle { color: #666; font-size: 1.03em; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #eee; }
+        h2 { color: #667eea; margin-top: 34px; margin-bottom: 14px; font-size: 1.45em; border-left: 4px solid #667eea; padding-left: 15px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: 1.1em; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 10px 0 14px 24px; }
+        li { margin-bottom: 7px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ff6b6b; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .warning strong { color: #d63031; }
+        .ok { background: #eaf7ef; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .ok strong { color: #1e8449; }
+        .quote { background: #f1f3f9; border-left: 4px solid #667eea; padding: 12px 15px; margin: 16px 0; border-radius: 5px; color: #444; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .95em; }
+        .link-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 26px 0; border: 1px solid #e9ecef; }
+        .link-box a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .link-box a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .95em; }
+        th, td { border: 1px solid #e3e6ea; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #f4f6fb; color: #444; }
+        .foot { margin-top: 34px; padding-top: 18px; border-top: 1px solid #eee; color: #888; font-size: .9em; }
+        .foot a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) { .container { padding: 24px 18px; } h1 { font-size: 1.5em; } h2 { font-size: 1.24em; } table { font-size: .86em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="crumb"><a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> &rsaquo; <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> &rsaquo; 密码不正确</nav>
+
+
+        <h1>提示「Apple ID 或密码不正确」怎么办？</h1>
+        <p class="subtitle">这是共享账号最常见的一条报错，也是被误解最多的一条：<strong>九成以上的情况不是账号废了，而是你手上的密码已经过期</strong>。处理起来通常只要一分钟。</p>
+
+        <h2>一、这条报错的完整样子</h2>
+        <div class="quote">Apple ID 或密码不正确。<br>请检查你的 Apple ID 和密码，然后重试。</div>
+        <p>出现位置一般在【App Store】右上角头像的登录框，或在下载应用弹出验证时。</p>
+
+        <h2>二、真正的原因：密码轮换</h2>
+        <p>共享账号不可能把密码固定下来——一旦固定，几天内就会被公开到各种网站、论坛与聚合页上，随后被大量陌生设备登录，Apple 判定异常并锁定。所以这类账号的通行做法是<strong>由系统定期轮换密码</strong>。</p>
+        <p>轮换发生时：</p>
+        <ul>
+            <li>新密码立即生效；</li>
+            <li><strong>旧密码当场失效</strong>——这就是你看到「密码不正确」的原因；</li>
+            <li>账号本身依旧是可用的，只是需要取新密码。</li>
+        </ul>
+
+        <h2>三、正确解决顺序（按这个来，一分钟内解决）</h2>
+        <ol>
+            <li><strong>取当前密码。</strong>回到账号列表页，找到你正在用的那个账号，点「显示密码」复制<strong>此刻</strong>显示的密码。不要使用收藏夹、聊天记录、笔记里保存的旧密码。</li>
+            <li><strong>完整退出再重新登录。</strong>【App Store】→ 右上角头像 → 滑到底部「退出登录」，然后重新输入账号密码。带着旧凭据直接改密码容易触发缓存问题。</li>
+            <li><strong>仍然失败就换号。</strong>若列表页显示密码但登录仍报错，说明该账号已被轮换到你看不到的状态，<strong>直接换下一个账号</strong>，不要纠缠。</li>
+        </ol>
+        <div class="ok">
+            <strong>✅ 判断标准</strong>
+            <p style="margin-top:10px;">同一个账号<strong>最多试两次</strong>。两次都进不去，一律换号。换号的成功率远高于反复重试。</p>
+        </div>
+
+        <h2>四、绝对不要做的事</h2>
+        <div class="warning">
+            <strong>⚠️ 反复重试会毁掉账号</strong>
+            <ul style="margin-top:10px;">
+                <li><strong>不要连续试错</strong>。短时间多次输错会触发 Apple 安全锁定，把「暂时不可用」变成「彻底不可用」，还会连累后面的使用者。</li>
+                <li><strong>不要点「忘记密码 / 找回账号」</strong>。这是共享账号，验证码会发往账号持有者的设备，你走不通这条流程，反而可能触发额外风控。</li>
+                <li><strong>不要把密码改掉</strong>。改动会让所有使用者（包括你自己后续）都无法登录。</li>
+            </ul>
+        </div>
+
+        <h2>五、和其他报错的区分</h2>
+        <table>
+            <tr><th>你看到的提示</th><th>性质</th><th>动作</th></tr>
+            <tr><td>Apple ID 或密码不正确</td><td>密码已轮换</td><td>取最新密码；两次失败即换号</td></tr>
+            <tr><td>此 Apple ID 已被锁定 / 已被停用</td><td>Apple 风控</td><td>直接换号，自己解不开</td></tr>
+            <tr><td>需要验证 / 双重认证</td><td>安全验证</td><td>直接换号，无法绕过</td></tr>
+            <tr><td>此 Apple ID 尚未在 App Store 使用过</td><td><strong>正常提示</strong></td><td>点「检查」→ 同意条款</td></tr>
+        </table>
+        <p>若你不确定属于哪一类，先看 <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> 的速查表。</p>
+
+        <h2>六、为什么总是遇到这条报错</h2>
+        <p>共享账号的本质是「一个账号被大量陌生用户轮流登录」，密码轮换就是对抗这种滥用而存在的机制。所以<strong>「密码不正确」出现的频率与账号池健康度直接相关，你无法从客户端侧降低它</strong>。若你希望打开就能用、不用反复取密，应改用独享账号。</p>
+
+        <div class="link-box">
+            <p><strong>👉 取用最新可用账号：</strong> <a href="https://id.tangping.icu/">小火箭共享账号实时可用列表</a> —— 首页逐条显示账号当前状态，点「显示密码」直接复制，拿到的永远是最新密码，不必翻找已失效的旧密码。</p>
+            <p><strong>📖 配套阅读：</strong> <a href="https://id.tangping.icu/faq">常见问题</a> ｜ <a href="https://id.tangping.icu/guide">完整下载教程</a> ｜ <a href="https://id.tangping.icu/safety">安全说明</a></p>
+            <p><strong>💎 不想再挑号：</strong> <a href="https://gg.tangping.icu/">苹果 ID 批发零售小铺</a> —— 独享账号，可自行修改密码、长期稳定。</p>
+            <p><strong>🔗 同类报错：</strong> <a href="https://leo-bot66.github.io/-id-/error/locked/">已被锁定 / 已被停用</a> ｜ <a href="https://leo-bot66.github.io/-id-/error/verification/">需要验证 / 双重认证</a> ｜ <a href="https://leo-bot66.github.io/-id-/error/not-purchased/">搜索不到应用 / 需要付费</a></p>
+        </div>
+
+        <div class="foot">
+            <p>相关页面：<a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a> ｜ <a href="https://leo-bot66.github.io/-id-/safe/">安全使用指南</a> ｜ <a href="https://leo-bot66.github.io/-id-/clients/">其他客户端下载指南</a></p>
+        </div>
+    </div>
+</body>
+</html>
