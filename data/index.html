@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小火箭共享账号可用性数据（每日更新）｜轮换成功率与失败原因公开</title>
+<meta name="description" content="小火箭共享账号的真实运维数据：近 14 天轮换尝试 579 次、成功 395 次、成功率 68.2%，附失败原因分布（受信任手机号验证、CAPTCHA、Apple 503 限流）与近 7 天取密次数。数据每日自动更新，来自后台轮换系统的执行日志。">
+<link rel="canonical" href="https://leo-bot66.github.io/-id-/data/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小火箭共享账号可用性数据（每日更新）">
+<meta property="og:description" content="近 14 天轮换 579 次、成功率 68.2%，失败原因全部公开。">
+<meta property="og:url" content="https://leo-bot66.github.io/-id-/data/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "小火箭共享账号可用性数据（每日更新）", "description": "共享 Apple ID 账号池的每日轮换执行记录：尝试次数、成功率、失败原因分布、取密次数。数据来自后台自动化系统的真实执行日志。", "url": "https://leo-bot66.github.io/-id-/data/", "temporalCoverage": "2026-10-10/2026-10-24", "dateModified": "2026-10-24", "isAccessibleForFree": true, "creator": {"@type": "Organization", "name": "Newbee ID"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+line-height:1.75;color:#2b3038;background:#f5f7fa;padding:24px 16px}
+.wrap{max-width:900px;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 2px 18px rgba(20,30,50,.08);padding:36px 40px 44px}
+h1{color:#667eea;font-size:1.9em;line-height:1.35;margin-bottom:12px}
+.sub{color:#666;padding-bottom:18px;border-bottom:2px solid #eef0f6;margin-bottom:26px}
+h2{font-size:1.25em;margin:30px 0 12px;color:#3a4256}
+h3{font-size:1.05em;margin:20px 0 8px;color:#445}
+p{margin:10px 0}
+ul,ol{margin:10px 0 10px 22px}
+li{margin:5px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.94em}
+th,td{padding:9px 10px;border-bottom:1px solid #eef0f6;text-align:left}
+th{background:#f8f9fc;color:#5a6274;font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+.card{background:#f8f9fc;border:1px solid #eef0f6;border-radius:10px;padding:16px;text-align:center}
+.card b{display:block;font-size:1.55em;color:#667eea;font-variant-numeric:tabular-nums}
+.card span{font-size:.86em;color:#7a8296}
+.bar{display:inline-block;height:8px;background:#667eea;border-radius:4px;vertical-align:middle}
+.muted{color:#7a8296;font-size:.9em}
+.note{background:#fff8e6;border-left:4px solid #f0b429;padding:14px 16px;border-radius:6px;margin:18px 0}
+.foot{margin-top:30px;padding-top:16px;border-top:1px dashed #dfe3ec;color:#7a8296;font-size:.9em}
+a{color:#667eea}
+@media(max-width:720px){.wrap{padding:22px 16px}.cards{grid-template-columns:repeat(2,1fr)}h1{font-size:1.35em}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>小火箭共享账号可用性数据（每日更新）</h1>
+<p class="sub">这一页不写宣传语。所有数字来自后台轮换系统的真实执行记录，包括<b>失败</b>——因为一个共享账号站到底靠不靠得住，看的是它敢不敢公开失败率。</p>
+
+<div class="cards">
+  <div class="card"><b>15/15</b><span>当前可用账号</span></div>
+  <div class="card"><b>100%</b><span>账号可用率</span></div>
+  <div class="card"><b>579</b><span>近 14 天轮换次数</span></div>
+  <div class="card"><b>11646</b><span>近 7 天取密次数</span></div>
+</div>
+
+<h2>一、账号池现状</h2>
+<p>共 <b>15</b> 个账号，其中 <b>15</b> 个处于启用状态。按地区分布如下——Shadowrocket 只在美区等少数区域上架，所以美区是刚需，其余按需。</p>
+<table>
+<tr><th>地区</th><th class="num">启用</th><th class="num">总数</th></tr>
+<tr><td>美国区</td><td class="num">9</td><td class="num">9</td></tr><tr><td>台湾区</td><td class="num">3</td><td class="num">3</td></tr><tr><td>香港区</td><td class="num">1</td><td class="num">1</td></tr><tr><td>韩国区</td><td class="num">1</td><td class="num">1</td></tr><tr><td>日本区</td><td class="num">1</td><td class="num">1</td></tr>
+</table>
+
+<h2>二、近 14 天轮换执行记录</h2>
+<p>下表是后台系统每天对账号执行「登录 → 校验 → 重置密码」的完整记录。<b>「失败」指的是这一次尝试失败，不等于账号不可用</b>——系统会自动换时间重试，账号是否可用以首页实时状态为准（当前 15/15 全部可用）。成功率不到 100% 是品类常态：Apple 会间歇性要求受信任手机号验证，这不是某个站能绕过的。</p>
+<table>
+<tr><th>日期</th><th class="num">尝试</th><th class="num">成功</th><th class="num">失败</th><th class="num">成功率</th></tr>
+<tr><td>2026-10-23</td><td class="num">38</td><td class="num">25</td><td class="num">13</td><td class="num">65.8%</td></tr><tr><td>2026-10-22</td><td class="num">42</td><td class="num">26</td><td class="num">16</td><td class="num">61.9%</td></tr><tr><td>2026-10-21</td><td class="num">39</td><td class="num">26</td><td class="num">13</td><td class="num">66.7%</td></tr><tr><td>2026-10-20</td><td class="num">40</td><td class="num">31</td><td class="num">9</td><td class="num">77.5%</td></tr><tr><td>2026-10-19</td><td class="num">47</td><td class="num">33</td><td class="num">14</td><td class="num">70.2%</td></tr><tr><td>2026-10-18</td><td class="num">43</td><td class="num">34</td><td class="num">9</td><td class="num">79.1%</td></tr><tr><td>2026-10-17</td><td class="num">25</td><td class="num">23</td><td class="num">2</td><td class="num">92.0%</td></tr><tr><td>2026-10-16</td><td class="num">43</td><td class="num">39</td><td class="num">4</td><td class="num">90.7%</td></tr><tr><td>2026-10-15</td><td class="num">33</td><td class="num">15</td><td class="num">18</td><td class="num">45.5%</td></tr><tr><td>2026-10-14</td><td class="num">42</td><td class="num">13</td><td class="num">29</td><td class="num">31.0%</td></tr><tr><td>2026-10-13</td><td class="num">63</td><td class="num">41</td><td class="num">22</td><td class="num">65.1%</td></tr><tr><td>2026-10-12</td><td class="num">69</td><td class="num">46</td><td class="num">23</td><td class="num">66.7%</td></tr><tr><td>2026-10-11</td><td class="num">28</td><td class="num">22</td><td class="num">6</td><td class="num">78.6%</td></tr><tr><td>2026-10-10</td><td class="num">27</td><td class="num">21</td><td class="num">6</td><td class="num">77.8%</td></tr>
+</table>
+
+<h2>三、失败原因分布（近 14 天）</h2>
+<p>失败不是一句话「密码错误」就能概括的。下面是后台记录的原始失败原因归类——其中「受信任手机号验证」和「Apple 503 限流」属于平台侧风控，站点无法绕过，只能等冷却后重试。</p>
+<table>
+<tr><th>失败原因（后台原始记录）</th><th class="num">次数</th><th>占比</th></tr>
+<tr><td>Apple 要求受信任手机号验证（间歇性风控）——已延后 5 分钟重试</td><td class="num">83</td><td><span class="bar" style="width:100%"></span></td></tr><tr><td>CAPTCHA 已填入但页面未推进，整页重载后仍失败</td><td class="num">49</td><td><span class="bar" style="width:59%"></span></td></tr><tr><td>页面未推进后重载登录页失败: Apple 503 限流持续（5 次重试均 503），需冷静期</td><td class="num">11</td><td><span class="bar" style="width:13%"></span></td></tr><tr><td>密保答案错误——请核对账号密保配置</td><td class="num">10</td><td><span class="bar" style="width:12%"></span></td></tr><tr><td>CAPTCHA 多次尝试失败</td><td class="num">10</td><td><span class="bar" style="width:12%"></span></td></tr><tr><td>CAPTCHA 验证码等待超时（3分钟）</td><td class="num">8</td><td><span class="bar" style="width:10%"></span></td></tr><tr><td>流程完成但无法确认成功——请检查截图与HTML</td><td class="num">4</td><td><span class="bar" style="width:5%"></span></td></tr><tr><td>CAPTCHA 验证码等待超时</td><td class="num">4</td><td><span class="bar" style="width:5%"></span></td></tr>
+</table>
+
+<h2>四、近 7 天取密次数</h2>
+<p>「取密」指用户在页面上点「显示密码」并成功拿到当前密码的次数。这个数字能反映站点是否真的有人在用——也是 Apple 触发风控的主要原因：同一个账号被越多不同 IP 取用，越容易被要求验证。</p>
+<table>
+<tr><th>日期</th><th class="num">取密次数</th></tr>
+<tr><td>2026-10-23</td><td class="num">1099</td></tr><tr><td>2026-10-22</td><td class="num">985</td></tr><tr><td>2026-10-21</td><td class="num">1177</td></tr><tr><td>2026-10-20</td><td class="num">2083</td></tr><tr><td>2026-10-19</td><td class="num">1958</td></tr><tr><td>2026-10-18</td><td class="num">1893</td></tr><tr><td>2026-10-17</td><td class="num">2451</td></tr>
+</table>
+
+<h2>五、数据说明</h2>
+<ul>
+<li><b>数据来源</b>：id 站生产库 <code>unlock_record</code>（轮换执行记录）与 <code>access_audit</code>（访问审计）两张表，脚本每天自动聚合。</li>
+<li><b>更新频率</b>：每日一次，页面底部显示最后生成时间。</li>
+<li><b>不包含什么</b>：本页不含任何账号、密码、密保、IP 明细。只发布聚合数字。</li>
+<li><b>为什么公开失败</b>：共享账号的失败率是品类属性。把失败原因摊开，比写「长期稳定」有意义——你可以据此判断什么时候该重试、什么时候该换号。</li>
+</ul>
+
+<div class="note">
+<strong>怎么用这组数据</strong>：成功率低于 80% 的日子，通常是 Apple 侧风控收紧，重试间隔要拉长；<b>「受信任手机号验证」</b>占比抬头，说明这批号正在被原持有人或平台回收，应及时换号而不是死磕。
+</div>
+
+<p>返回：<a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页（免费账号获取与使用教程）</a>　｜　<a href="https://leo-bot66.github.io/-id-/troubleshoot/">五类报错排查手册</a>　｜　<a href="https://leo-bot66.github.io/-id-/safe/">安全使用指南</a></p>
+
+<p class="foot">最后生成：2026-10-24　·　最近一次后台验证：2026-10-24 05:24:56　·　本页由脚本自动生成，无需人工维护</p>
+</div>
+</body>
+</html>
