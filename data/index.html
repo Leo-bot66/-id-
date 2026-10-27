@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>小火箭共享账号可用性数据（每日更新）｜轮换成功率与失败原因公开</title>
-<meta name="description" content="小火箭共享账号的真实运维数据：近 14 天轮换尝试 592 次、成功 396 次、成功率 66.9%，附失败原因分布（受信任手机号验证、CAPTCHA、Apple 503 限流）与近 7 天取密次数。数据每日自动更新，来自后台轮换系统的执行日志。">
+<meta name="description" content="小火箭共享账号的真实运维数据：近 14 天轮换尝试 558 次、成功 369 次、成功率 66.1%，附失败原因分布（受信任手机号验证、CAPTCHA、Apple 503 限流）与近 7 天取密次数。数据每日自动更新，来自后台轮换系统的执行日志。">
 <link rel="canonical" href="https://leo-bot66.github.io/-id-/data/">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小火箭共享账号可用性数据（每日更新）">
-<meta property="og:description" content="近 14 天轮换 592 次、成功率 66.9%，失败原因全部公开。">
+<meta property="og:description" content="近 14 天轮换 558 次、成功率 66.1%，失败原因全部公开。">
 <meta property="og:url" content="https://leo-bot66.github.io/-id-/data/">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "小火箭共享账号可用性数据（每日更新）", "description": "共享 Apple ID 账号池的每日轮换执行记录：尝试次数、成功率、失败原因分布、取密次数。数据来自后台自动化系统的真实执行日志。", "url": "https://leo-bot66.github.io/-id-/data/", "temporalCoverage": "2026-10-12/2026-10-26", "dateModified": "2026-10-26", "isAccessibleForFree": true, "creator": {"@type": "Organization", "name": "Newbee ID"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "小火箭共享账号可用性数据（每日更新）", "description": "共享 Apple ID 账号池的每日轮换执行记录：尝试次数、成功率、失败原因分布、取密次数。数据来自后台自动化系统的真实执行日志。", "url": "https://leo-bot66.github.io/-id-/data/", "temporalCoverage": "2026-10-13/2026-10-27", "dateModified": "2026-10-27", "isAccessibleForFree": true, "creator": {"@type": "Organization", "name": "Newbee ID"}}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
@@ -46,38 +46,38 @@ a{color:#667eea}
 <p class="sub">这一页不写宣传语。所有数字来自后台轮换系统的真实执行记录，包括<b>失败</b>——因为一个共享账号站到底靠不靠得住，看的是它敢不敢公开失败率。</p>
 
 <div class="cards">
-  <div class="card"><b>6/15</b><span>当前可用账号</span></div>
-  <div class="card"><b>40%</b><span>账号可用率</span></div>
-  <div class="card"><b>592</b><span>近 14 天轮换次数</span></div>
-  <div class="card"><b>11224</b><span>近 7 天取密次数</span></div>
+  <div class="card"><b>12/15</b><span>当前可用账号</span></div>
+  <div class="card"><b>80%</b><span>账号可用率</span></div>
+  <div class="card"><b>558</b><span>近 14 天轮换次数</span></div>
+  <div class="card"><b>14983</b><span>近 7 天取密次数</span></div>
 </div>
 
 <h2>一、账号池现状</h2>
-<p>共 <b>15</b> 个账号，其中 <b>6</b> 个处于启用状态。按地区分布如下——Shadowrocket 只在美区等少数区域上架，所以美区是刚需，其余按需。</p>
+<p>共 <b>15</b> 个账号，其中 <b>12</b> 个处于启用状态。按地区分布如下——Shadowrocket 只在美区等少数区域上架，所以美区是刚需，其余按需。</p>
 <table>
 <tr><th>地区</th><th class="num">启用</th><th class="num">总数</th></tr>
-<tr><td>美国区</td><td class="num">2</td><td class="num">9</td></tr><tr><td>台湾区</td><td class="num">1</td><td class="num">3</td></tr><tr><td>香港区</td><td class="num">1</td><td class="num">1</td></tr><tr><td>韩国区</td><td class="num">1</td><td class="num">1</td></tr><tr><td>日本区</td><td class="num">1</td><td class="num">1</td></tr>
+<tr><td>美国区</td><td class="num">7</td><td class="num">9</td></tr><tr><td>台湾区</td><td class="num">2</td><td class="num">3</td></tr><tr><td>香港区</td><td class="num">1</td><td class="num">1</td></tr><tr><td>韩国区</td><td class="num">1</td><td class="num">1</td></tr><tr><td>日本区</td><td class="num">1</td><td class="num">1</td></tr>
 </table>
 
 <h2>二、近 14 天轮换执行记录</h2>
-<p>下表是后台系统每天对账号执行「登录 → 校验 → 重置密码」的完整记录。<b>「失败」指的是这一次尝试失败，不等于账号不可用</b>——系统会自动换时间重试，账号是否可用以首页实时状态为准（当前 6/15 全部可用）。成功率不到 100% 是品类常态：Apple 会间歇性要求受信任手机号验证，这不是某个站能绕过的。</p>
+<p>下表是后台系统每天对账号执行「登录 → 校验 → 重置密码」的完整记录。<b>「失败」指的是这一次尝试失败，不等于账号不可用</b>——系统会自动换时间重试，账号是否可用以首页实时状态为准（当前 12/15 全部可用）。成功率不到 100% 是品类常态：Apple 会间歇性要求受信任手机号验证，这不是某个站能绕过的。</p>
 <table>
 <tr><th>日期</th><th class="num">尝试</th><th class="num">成功</th><th class="num">失败</th><th class="num">成功率</th></tr>
-<tr><td>2026-10-25</td><td class="num">35</td><td class="num">25</td><td class="num">10</td><td class="num">71.4%</td></tr><tr><td>2026-10-24</td><td class="num">33</td><td class="num">19</td><td class="num">14</td><td class="num">57.6%</td></tr><tr><td>2026-10-23</td><td class="num">38</td><td class="num">25</td><td class="num">13</td><td class="num">65.8%</td></tr><tr><td>2026-10-22</td><td class="num">42</td><td class="num">26</td><td class="num">16</td><td class="num">61.9%</td></tr><tr><td>2026-10-21</td><td class="num">39</td><td class="num">26</td><td class="num">13</td><td class="num">66.7%</td></tr><tr><td>2026-10-20</td><td class="num">40</td><td class="num">31</td><td class="num">9</td><td class="num">77.5%</td></tr><tr><td>2026-10-19</td><td class="num">47</td><td class="num">33</td><td class="num">14</td><td class="num">70.2%</td></tr><tr><td>2026-10-18</td><td class="num">43</td><td class="num">34</td><td class="num">9</td><td class="num">79.1%</td></tr><tr><td>2026-10-17</td><td class="num">25</td><td class="num">23</td><td class="num">2</td><td class="num">92.0%</td></tr><tr><td>2026-10-16</td><td class="num">43</td><td class="num">39</td><td class="num">4</td><td class="num">90.7%</td></tr><tr><td>2026-10-15</td><td class="num">33</td><td class="num">15</td><td class="num">18</td><td class="num">45.5%</td></tr><tr><td>2026-10-14</td><td class="num">42</td><td class="num">13</td><td class="num">29</td><td class="num">31.0%</td></tr><tr><td>2026-10-13</td><td class="num">63</td><td class="num">41</td><td class="num">22</td><td class="num">65.1%</td></tr><tr><td>2026-10-12</td><td class="num">69</td><td class="num">46</td><td class="num">23</td><td class="num">66.7%</td></tr>
+<tr><td>2026-10-26</td><td class="num">35</td><td class="num">19</td><td class="num">16</td><td class="num">54.3%</td></tr><tr><td>2026-10-25</td><td class="num">35</td><td class="num">25</td><td class="num">10</td><td class="num">71.4%</td></tr><tr><td>2026-10-24</td><td class="num">33</td><td class="num">19</td><td class="num">14</td><td class="num">57.6%</td></tr><tr><td>2026-10-23</td><td class="num">38</td><td class="num">25</td><td class="num">13</td><td class="num">65.8%</td></tr><tr><td>2026-10-22</td><td class="num">42</td><td class="num">26</td><td class="num">16</td><td class="num">61.9%</td></tr><tr><td>2026-10-21</td><td class="num">39</td><td class="num">26</td><td class="num">13</td><td class="num">66.7%</td></tr><tr><td>2026-10-20</td><td class="num">40</td><td class="num">31</td><td class="num">9</td><td class="num">77.5%</td></tr><tr><td>2026-10-19</td><td class="num">47</td><td class="num">33</td><td class="num">14</td><td class="num">70.2%</td></tr><tr><td>2026-10-18</td><td class="num">43</td><td class="num">34</td><td class="num">9</td><td class="num">79.1%</td></tr><tr><td>2026-10-17</td><td class="num">25</td><td class="num">23</td><td class="num">2</td><td class="num">92.0%</td></tr><tr><td>2026-10-16</td><td class="num">43</td><td class="num">39</td><td class="num">4</td><td class="num">90.7%</td></tr><tr><td>2026-10-15</td><td class="num">33</td><td class="num">15</td><td class="num">18</td><td class="num">45.5%</td></tr><tr><td>2026-10-14</td><td class="num">42</td><td class="num">13</td><td class="num">29</td><td class="num">31.0%</td></tr><tr><td>2026-10-13</td><td class="num">63</td><td class="num">41</td><td class="num">22</td><td class="num">65.1%</td></tr>
 </table>
 
 <h2>三、失败原因分布（近 14 天）</h2>
 <p>失败不是一句话「密码错误」就能概括的。下面是后台记录的原始失败原因归类——其中「受信任手机号验证」和「Apple 503 限流」属于平台侧风控，站点无法绕过，只能等冷却后重试。</p>
 <table>
 <tr><th>失败原因（后台原始记录）</th><th class="num">次数</th><th>占比</th></tr>
-<tr><td>Apple 要求受信任手机号验证（间歇性风控）——已延后 5 分钟重试</td><td class="num">82</td><td><span class="bar" style="width:100%"></span></td></tr><tr><td>CAPTCHA 已填入但页面未推进，整页重载后仍失败</td><td class="num">54</td><td><span class="bar" style="width:66%"></span></td></tr><tr><td>页面未推进后重载登录页失败: Apple 503 限流持续（5 次重试均 503），需冷静期</td><td class="num">14</td><td><span class="bar" style="width:17%"></span></td></tr><tr><td>密保答案错误——请核对账号密保配置</td><td class="num">10</td><td><span class="bar" style="width:12%"></span></td></tr><tr><td>CAPTCHA 验证码等待超时</td><td class="num">9</td><td><span class="bar" style="width:11%"></span></td></tr><tr><td>CAPTCHA 多次尝试失败</td><td class="num">9</td><td><span class="bar" style="width:11%"></span></td></tr><tr><td>CAPTCHA 验证码等待超时（3分钟）</td><td class="num">8</td><td><span class="bar" style="width:10%"></span></td></tr><tr><td>账号已被锁定，自助解锁失败（弹回密码入口页），需人工处理</td><td class="num">4</td><td><span class="bar" style="width:5%"></span></td></tr>
+<tr><td>Apple 要求受信任手机号验证（间歇性风控）——已延后 5 分钟重试</td><td class="num">77</td><td><span class="bar" style="width:100%"></span></td></tr><tr><td>CAPTCHA 已填入但页面未推进，整页重载后仍失败</td><td class="num">50</td><td><span class="bar" style="width:65%"></span></td></tr><tr><td>页面未推进后重载登录页失败: Apple 503 限流持续（5 次重试均 503），需冷静期</td><td class="num">19</td><td><span class="bar" style="width:25%"></span></td></tr><tr><td>密保答案错误——请核对账号密保配置</td><td class="num">10</td><td><span class="bar" style="width:13%"></span></td></tr><tr><td>CAPTCHA 验证码等待超时</td><td class="num">9</td><td><span class="bar" style="width:12%"></span></td></tr><tr><td>CAPTCHA 多次尝试失败</td><td class="num">8</td><td><span class="bar" style="width:10%"></span></td></tr><tr><td>CAPTCHA 验证码等待超时（3分钟）</td><td class="num">7</td><td><span class="bar" style="width:9%"></span></td></tr><tr><td>账号已被锁定，自助解锁失败（弹回密码入口页），需人工处理</td><td class="num">5</td><td><span class="bar" style="width:6%"></span></td></tr>
 </table>
 
 <h2>四、近 7 天取密次数</h2>
 <p>「取密」指用户在页面上点「显示密码」并成功拿到当前密码的次数。这个数字能反映站点是否真的有人在用——也是 Apple 触发风控的主要原因：同一个账号被越多不同 IP 取用，越容易被要求验证。</p>
 <table>
 <tr><th>日期</th><th class="num">取密次数</th></tr>
-<tr><td>2026-10-25</td><td class="num">2404</td></tr><tr><td>2026-10-24</td><td class="num">1518</td></tr><tr><td>2026-10-23</td><td class="num">1099</td></tr><tr><td>2026-10-22</td><td class="num">985</td></tr><tr><td>2026-10-21</td><td class="num">1177</td></tr><tr><td>2026-10-20</td><td class="num">2083</td></tr><tr><td>2026-10-19</td><td class="num">1958</td></tr>
+<tr><td>2026-10-26</td><td class="num">5717</td></tr><tr><td>2026-10-25</td><td class="num">2404</td></tr><tr><td>2026-10-24</td><td class="num">1518</td></tr><tr><td>2026-10-23</td><td class="num">1099</td></tr><tr><td>2026-10-22</td><td class="num">985</td></tr><tr><td>2026-10-21</td><td class="num">1177</td></tr><tr><td>2026-10-20</td><td class="num">2083</td></tr>
 </table>
 
 <h2>五、数据说明</h2>
@@ -94,7 +94,7 @@ a{color:#667eea}
 
 <p>返回：<a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页（免费账号获取与使用教程）</a>　｜　<a href="https://leo-bot66.github.io/-id-/troubleshoot/">五类报错排查手册</a>　｜　<a href="https://leo-bot66.github.io/-id-/safe/">安全使用指南</a></p>
 
-<p class="foot">最后生成：2026-10-26　·　最近一次后台验证：2026-10-26 09:18:18　·　本页由脚本自动生成，无需人工维护</p>
+<p class="foot">最后生成：2026-10-27　·　最近一次后台验证：2026-10-27 10:18:17　·　本页由脚本自动生成，无需人工维护</p>
 </div>
 </body>
 </html>
