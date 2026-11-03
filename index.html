@@ -154,7 +154,9 @@
         <p class="subtitle">小火箭共享账号怎么找、怎么用、怎么避免踩坑：含免费美区 Apple ID 的获取途径、Shadowrocket（小火箭）下载步骤、五类常见报错处理、各区域 Apple ID 用途对比，以及判断一个共享 ID 网站是否还在维护的 5 个可验证标准。</p>
 
         <div class="link-box cta-top">
-            <p><strong>账号状态：🟢 正常在线（带小火箭已购记录）</strong></p>
+            <!-- DAILY_STATUS_START -->
+            <p><strong>账号状态：🟢 在线 15 个</strong>（美区 10 · 台湾区 2 · 日本区 1 · 韩国区 1 · 香港区 1）｜ 更新于 2026-11-03 20:15</p>
+            <!-- DAILY_STATUS_END -->
             <p><a href="https://id.tangping.icu" target="_blank" rel="noopener">前往免费美区 Apple ID 实时获取页</a></p>
             <p class="cta-note">支持一键获取最新可用账号与密码</p>
 
@@ -221,6 +223,20 @@
         <p>⚠️ 一个常见误解：<strong>「换区下载」不需要换手机、不需要改 Apple ID 地区设置</strong>。你只需要在 App Store 里退出当前账号、登录对应区的账号，搜到应用点下载，下完再退回来。iCloud、设置里的账号完全不用动——动了才会有锁机风险。</p>
         <p>下载完成后第一次打开小火箭，需要导入订阅或手动添加节点才能用。软件本身只是个代理客户端，不带任何节点。</p>
 
+        <h2>🧩 小火箭、Quantumult X、Stash、Loon 怎么选</h2>
+        <p>被中国区下架的代理客户端不止小火箭一个。这四款是最常被拿来比较的，都在美区 App Store 上架，都需要用非大陆区 Apple ID 才能下载。买断制，一次付费永久使用，换设备后用同一个 Apple ID 可以免费重新下载。</p>
+        <table>
+            <thead><tr><th>客户端</th><th>美区价格</th><th>特点</th><th>适合谁</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Shadowrocket（小火箭）</strong></td><td>$2.99</td><td>老牌、规则配置简单、节点协议兼容性最好，中文资料最多</td><td>绝大多数人，第一次用代理客户端的首选</td></tr>
+                <tr><td><strong>Quantumult X</strong></td><td>$7.99</td><td>功能最强，支持脚本、重写、定时任务，但配置门槛高</td><td>愿意折腾规则、需要自动化的人</td></tr>
+                <tr><td><strong>Stash</strong></td><td>$3.99</td><td>界面现代，规则语法接近 Clash，可从 Clash 配置迁移</td><td>本来就在用 Clash 规则的人</td></tr>
+                <tr><td><strong>Loon</strong></td><td>$5.99</td><td>轻量、省电，后台驻留表现好</td><td>追求轻快、长期挂后台的人</td></tr>
+            </tbody>
+        </table>
+        <p><strong>怎么选：</strong>不折腾就选小火箭，$2.99 最便宜、教程最多、出问题最容易搜到答案。已经有一套 Clash 规则想复用，选 Stash。要写脚本做自动化，才需要考虑 Quantumult X——它的学习成本远高于另外三个。</p>
+        <p>⚠️ 四款都<strong>只是客户端，不带节点</strong>。装上之后必须导入订阅或手动添加节点才能连上，这一步和用哪款客户端无关。</p>
+
         <h2>❓ 五类常见报错与处理</h2>
 
         <h3>1. 提示「此 Apple ID 尚未在 App Store 使用过」</h3>
@@ -237,6 +253,20 @@
 
         <h3>5. 提示「Apple ID 已锁定」或要求双重认证</h3>
         <p>共享账号被多人同时使用时容易出现该提示，属于苹果风控的正常反应。<strong>解决办法是更换账号</strong>，返回获取页取用新的可用账号即可。</p>
+
+        <h2>🔒 用共享 Apple ID 会不会锁机：机制说清楚</h2>
+        <p>「用共享账号会不会把手机锁了」是这类站点被问得最多的问题。答案取决于<strong>你在哪个入口登录</strong>，而不是账号本身是谁的。</p>
+        <table>
+            <thead><tr><th>登录位置</th><th>实际登录的是什么</th><th>对设备的影响</th></tr></thead>
+            <tbody>
+                <tr><td><strong>App Store → 头像 → 登录</strong></td><td>媒体与购买项目（Media &amp; Purchases）</td><td>只影响应用下载与已购记录，<strong>不影响设备绑定，不会锁机</strong></td></tr>
+                <tr><td><strong>设置 → 顶部头像 → 登录</strong></td><td>Apple ID 本体（含 iCloud）</td><td>设备与该账号绑定，可能同步通讯录、照片、备份，<strong>存在被远程锁定或抹除的风险</strong></td></tr>
+            </tbody>
+        </table>
+        <p><strong>锁机是怎么发生的：</strong>当你在「设置」里登录了别人的 Apple ID，并且该账号开启了「查找我的 iPhone」，那么账号持有人可以在 iCloud 网页端对这台设备执行「丢失模式」或「抹掉设备」。抹掉之后设备会停在激活锁界面，必须输入对方的账号密码才能激活——这才是真正的「变砖」。整个过程和账号是不是共享的无关，只和你登在哪个入口有关。</p>
+        <p><strong>所以规则只有一条：</strong>全程只在 App Store 里登录，绝不进「设置」里的账号入口。<strong>遵守这一条，共享账号不会带来任何设备风险</strong>；违反这一条，即使是你自己买的独享号，同样可能出问题。</p>
+        <p><strong>万一已经登错了怎么办：</strong>立刻进入「设置 → 顶部头像 → 滑到最底部 → 退出登录」，选择「从我的 iPhone 删除」；然后打开「设置 → 你的名字 → 查找 → 查找我的 iPhone」，确认它处于<strong>关闭</strong>状态。如果退出时提示需要密码，说明账号已开启「查找」，此时不要强行操作，先联系账号提供方让对方在 iCloud 端移除设备。</p>
+        <p>💡 另外两点：共享账号不要绑定支付方式、不要充值、不要存个人资料——不是因为它会锁机，而是因为余额和购买记录属于账号本身，账号被收回时这些都拿不回来。</p>
 
         <h2>🌍 各区域 Apple ID 用途对比</h2>
         <p>不同区域的应用上架情况、订阅定价差异较大，按用途选择更划算：</p>
