@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>共享 ID 是什么意思｜小火箭共享 ID 与独享号的完整区别</title>
+    <meta name="description" content="共享 ID 是什么意思？本文用最直白的方式讲清共享 Apple ID 的定义、工作原理、能做什么不能做什么，以及共享号、独享号、自己注册号三者的完整对比，并给出判断共享 ID 站是否靠谱的四个信号。">
+    <meta name="keywords" content="共享id,共享id是什么意思,共享id小火箭,海外id共享,共享apple id,苹果共享id,共享账号和独享账号区别">
+    <link rel="canonical" href="https://leo-bot66.github.io/-id-/shared-id/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="共享 ID 是什么意思｜小火箭共享 ID 与独享号的完整区别">
+    <meta property="og:description" content="共享 Apple ID 的定义、原理、能力边界，以及共享号/独享号/自注册号三者对比。">
+    <meta property="og:url" content="https://leo-bot66.github.io/-id-/shared-id/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"共享 ID 是什么意思？","acceptedAnswer":{"@type":"Answer","text":"共享 ID 指一个 Apple ID 被多个使用者共同登录使用，主要用于 App Store 下载已购应用。它共享的是购买记录，不是个人数据。用户只在 App Store 登录，不登录 iCloud，因此不会影响自己的设备与资料。"}},
+        {"@type":"Question","name":"共享 ID 和独享 ID 有什么区别？","acceptedAnswer":{"@type":"Answer","text":"共享 ID 由多人同时使用，密码会被系统定期轮换，可能被他人改动或被风控收回；独享 ID 只有一个人使用，可以自行修改密码、绑定支付方式、转区，稳定性高得多，但需要付费购买。"}},
+        {"@type":"Question","name":"共享 ID 安全吗？会不会锁机？","acceptedAnswer":{"@type":"Answer","text":"只在 App Store 登录是安全的。锁机的唯一成因是把他人账号登录到「设置 → iCloud」并开启「查找我的 iPhone」。共享 ID 的风险主要是账号被他人改动或收回，而不是设备安全。"}},
+        {"@type":"Question","name":"怎么判断一个共享 ID 站靠不靠谱？","acceptedAnswer":{"@type":"Answer","text":"看四点：是否实时显示每个账号的在线状态；是否说明密码轮换机制；是否明确提示只登 App Store 不登 iCloud；是否区分免费共享与付费独享。四点都讲的站点，通常比只丢一串账号密码的帖子可靠。"}}
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.7; color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white;
+            border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.2); padding: 40px;
+        }
+        nav.crumb { font-size: .92em; color: #888; margin-bottom: 18px; }
+        nav.crumb a { color: #667eea; text-decoration: none; }
+        nav.crumb a:hover { text-decoration: underline; }
+        h1 { color: #667eea; margin-bottom: 10px; font-size: 2em; line-height: 1.3; }
+        .subtitle { color: #666; font-size: 1.03em; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #eee; }
+        h2 { color: #667eea; margin-top: 34px; margin-bottom: 14px; font-size: 1.5em; border-left: 4px solid #667eea; padding-left: 15px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: 1.1em; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 10px 0 14px 24px; }
+        li { margin-bottom: 7px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ff6b6b; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .warning strong { color: #d63031; }
+        .ok { background: #eaf7ef; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .ok strong { color: #1e8449; }
+        .link-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 26px 0; border: 1px solid #e9ecef; }
+        .link-box a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .link-box a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .95em; }
+        th, td { border: 1px solid #e3e6ea; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #f4f6fb; color: #444; }
+        .foot { margin-top: 34px; padding-top: 18px; border-top: 1px solid #eee; color: #888; font-size: .9em; }
+        .foot a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) { .container { padding: 24px 18px; } h1 { font-size: 1.55em; } h2 { font-size: 1.28em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="crumb"><a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> &rsaquo; 共享 ID 是什么意思</nav>
+
+        <h1>共享 ID 是什么意思：小火箭共享 ID 与独享号的完整区别</h1>
+        <p class="subtitle">这个词被搜得最多，也最容易被误解。一句话定义：<strong>共享 ID 是多人共用一个 Apple ID，共享的是购买记录，不是你的个人数据。</strong> 下面讲清原理、边界和怎么判断一个共享 ID 站是否靠谱。</p>
+
+        <h2>一、一句话定义</h2>
+        <p><strong>共享 ID = 一个 Apple ID，被多个使用者共同登录，用于在 App Store 下载该账号已购买的应用。</strong></p>
+        <p>关键在于「共享什么」：共享的是<strong>这个账号的购买记录</strong>（哪些应用已付费买过），而不是设备绑定、照片、通讯录、备份——后三者只有在「设置 → iCloud」登录时才会发生，而共享 ID 的正确用法是<strong>只登 App Store</strong>。</p>
+
+        <h2>二、它怎么运作（账号池 + 密码轮换）</h2>
+        <ol>
+            <li><strong>批量采购</strong>：维护方购买一批外区 Apple ID，并各自完成目标应用的购买（例如美区 $2.99 的 Shadowrocket）。</li>
+            <li><strong>组成账号池</strong>：这些账号被整理成列表，标注地区、状态、可下载的应用。</li>
+            <li><strong>密码轮换</strong>：系统定期自动修改密码，防止某个使用者改密码后独占账号，也降低被批量撞库的风险。</li>
+            <li><strong>状态监控</strong>：每个账号的可用性被持续检测（能否登录、是否被锁），失效的移出池子、补充新号。</li>
+        </ol>
+        <p>所以你会看到两个现象：密码总在变、账号数量每天有增减。这不是不稳定，是这套机制的必然结果。</p>
+
+        <h2>三、共享 ID 能做什么、不能做什么</h2>
+        <table>
+            <tr><th>能做</th><th>不能做</th></tr>
+            <tr><td>下载该账号已购买的应用（如小火箭）</td><td>充值、绑定支付方式（余额不归你，且会被他人动用）</td></tr>
+            <tr><td>更新已下载的应用（账号仍有效时）</td><td>转区、改资料、改密码（会影响其他使用者）</td></tr>
+            <tr><td>在 App Store 正常搜索、下载、更新</td><td>登录 iCloud / 设置（这是锁机的唯一成因）</td></tr>
+            <tr><td>多台设备分别登录使用</td><td>当作自己的长期账号保存个人数据</td></tr>
+        </table>
+
+        <h2>四、共享号、独享号、自己注册号：三者对比</h2>
+        <table>
+            <tr><th></th><th>共享 ID</th><th>独享 ID</th><th>自己注册外区号</th></tr>
+            <tr><td>使用者</td><td>多人</td><td>仅你</td><td>仅你</td></tr>
+            <tr><td>成本</td><td>0 元</td><td>几十元起</td><td>应用本身价格 + 支付方式</td></tr>
+            <tr><td>能否改密码</td><td>❌ 不建议</td><td>✅ 可以</td><td>✅ 可以</td></tr>
+            <tr><td>稳定性</td><td>低，随时可能失效</td><td>高</td><td>高</td></tr>
+            <tr><td>上手时间</td><td>几分钟</td><td>几分钟</td><td>需要地址、免税州、有时需礼品卡</td></tr>
+            <tr><td>适合</td><td>临时下载一次</td><td>长期使用、多设备</td><td>有折腾能力、想完全自主</td></tr>
+        </table>
+
+        <h2>五、小火箭共享 ID 为什么特别常见</h2>
+        <p>因为 Shadowrocket 同时满足三个条件，让它成为共享 ID 的最大需求方：</p>
+        <ul>
+            <li><strong>付费应用</strong>（$2.99）——不买就用不了；</li>
+            <li><strong>中国区已下架</strong>——必须用外区账号，多数人选美区；</li>
+            <li><strong>一次性需求强</strong>——很多人只需要下载一次，不愿为它专门注册外区账号并解决支付。</li>
+        </ul>
+        <p>这三点叠加，使「小火箭共享 ID」成为这个品类里搜索量最高的词。具体下载流程见 <a href="https://leo-bot66.github.io/-id-/shadowrocket/">Shadowrocket 共享账号专题</a>。</p>
+
+        <h2>六、怎么判断一个共享 ID 站靠不靠谱</h2>
+        <p>只看四个信号，缺一个就要谨慎：</p>
+        <ol>
+            <li><strong>是否实时显示每个账号的状态</strong>。只丢一串账号密码、不标在线状态的，大概率一半是死的。</li>
+            <li><strong>是否说明密码轮换机制</strong>。讲不清密码为什么会变，说明它自己也不维护。</li>
+            <li><strong>是否明确提示「只登 App Store，不登 iCloud」</strong>。不提示的站点，等于把锁机风险留给用户。</li>
+            <li><strong>是否区分免费共享与付费独享</strong>。只有免费号的站点往往没有持续维护能力。</li>
+        </ol>
+        <div class="ok">
+            <strong>✅ 四个信号都有的样子</strong>
+            <p style="margin-top:10px;"><a href="https://id.tangping.icu/">小火箭共享账号实时列表</a> 就是按这个标准做的：逐条标在线状态、说明 30 分钟轮换、首页写明只登 App Store、并有独立的独享号入口。</p>
+        </div>
+
+        <h2>七、一个必须记住的红线</h2>
+        <div class="warning">
+            <strong>⚠️ 共享 ID 只在 App Store 登录，绝对不要登 iCloud</strong>
+            <p style="margin-top:10px;">锁机与账号是否共享无关，只与登录位置有关。一旦在「设置 → 你的名字」登录他人账号并开启「查找我的 iPhone」，对方就能远程锁定设备。详见 <a href="https://leo-bot66.github.io/-id-/safe/">安全使用指南</a>。</p>
+        </div>
+
+        <div class="link-box">
+            <p><strong>👉 想直接用：</strong> <a href="https://id.tangping.icu/">小火箭共享账号实时可用列表</a> —— 逐条显示在线状态，点「显示密码」取当前有效密码。</p>
+            <p><strong>📖 相关阅读：</strong> <a href="https://leo-bot66.github.io/-id-/us-apple-id/">美区 Apple ID 共享</a> ｜ <a href="https://leo-bot66.github.io/-id-/shadowrocket/">Shadowrocket 共享账号</a> ｜ <a href="https://leo-bot66.github.io/-id-/free/">免费共享 ID</a> ｜ <a href="https://leo-bot66.github.io/-id-/safe/">安全指南</a></p>
+            <p><strong>💎 想长期稳定：</strong> <a href="https://gg.tangping.icu/products">独享老号现货</a> —— 只有你使用，可自行改密。</p>
+        </div>
+
+        <div class="foot">
+            <p>相关页面：<a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> ｜ <a href="https://leo-bot66.github.io/-id-/us-apple-id/">美区 Apple ID 共享</a> ｜ <a href="https://leo-bot66.github.io/-id-/shadowrocket/">Shadowrocket 共享账号</a> ｜ <a href="https://leo-bot66.github.io/-id-/free/">免费共享 ID</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查</a></p>
+        </div>
+    </div>
+</body>
+</html>

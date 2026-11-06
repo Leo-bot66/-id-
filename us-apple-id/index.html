@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>美区 Apple ID 共享｜免费账号获取与登录下载小火箭教程</title>
+    <meta name="description" content="美区 Apple ID 共享怎么用？本文讲清为什么下载小火箭必须用美区账号、共享美区 ID 从哪里获取、六步登录下载流程，以及密码错误、账号被锁、需要验证三类报错的正确处理方式。">
+    <meta name="keywords" content="美区AppleID共享,共享美区id,美区id共享,苹果美区id共享,美区apple id,小火箭美区账号,Shadowrocket美区ID">
+    <link rel="canonical" href="https://leo-bot66.github.io/-id-/us-apple-id/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="美区 Apple ID 共享｜免费账号获取与登录下载小火箭教程">
+    <meta property="og:description" content="为什么下载小火箭必须用美区账号、共享美区 ID 怎么获取、六步登录下载流程与三类报错处理。">
+    <meta property="og:url" content="https://leo-bot66.github.io/-id-/us-apple-id/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"为什么下载小火箭一定要用美区 Apple ID？","acceptedAnswer":{"@type":"Answer","text":"Shadowrocket 已在中国区 App Store 下架，中国区账号搜索不到该应用。美区是上架最全、审核最快的区域，绝大多数教程都以美区账号为准。台湾区、日本区、韩国区也能下载部分应用，但美区覆盖最广。"}},
+        {"@type":"Question","name":"共享美区 Apple ID 是免费的吗？","acceptedAnswer":{"@type":"Answer","text":"免费共享账号由维护方批量提供，多人共用，密码会被系统定期轮换，所以文档里写死的密码很快失效。正确做法是从实时页面取当前密码，而不是照抄教程截图里的旧密码。"}},
+        {"@type":"Question","name":"登录美区共享账号会不会影响我自己的 Apple ID？","acceptedAnswer":{"@type":"Answer","text":"只在 App Store 登录不会。App Store 登录仅共享购买记录，不涉及设备绑定与个人数据。退出共享账号后重新登录自己的账号即可，已下载的应用仍保留在本机。"}},
+        {"@type":"Question","name":"美区共享账号显示密码错误怎么办？","acceptedAnswer":{"@type":"Answer","text":"先确认是从实时页面新取的密码（旧密码必然失效）；确认账号地区选的是美国；若仍错误，说明该号已进入风控或被他人改动，直接换下一个号，不要反复重试，反复试会加速账号被锁。"}}
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.7; color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white;
+            border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.2); padding: 40px;
+        }
+        nav.crumb { font-size: .92em; color: #888; margin-bottom: 18px; }
+        nav.crumb a { color: #667eea; text-decoration: none; }
+        nav.crumb a:hover { text-decoration: underline; }
+        h1 { color: #667eea; margin-bottom: 10px; font-size: 2em; line-height: 1.3; }
+        .subtitle { color: #666; font-size: 1.03em; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #eee; }
+        h2 { color: #667eea; margin-top: 34px; margin-bottom: 14px; font-size: 1.5em; border-left: 4px solid #667eea; padding-left: 15px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: 1.1em; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 10px 0 14px 24px; }
+        li { margin-bottom: 7px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ff6b6b; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .warning strong { color: #d63031; }
+        .ok { background: #eaf7ef; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .ok strong { color: #1e8449; }
+        .link-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 26px 0; border: 1px solid #e9ecef; }
+        .link-box a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .link-box a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .95em; }
+        th, td { border: 1px solid #e3e6ea; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #f4f6fb; color: #444; }
+        .foot { margin-top: 34px; padding-top: 18px; border-top: 1px solid #eee; color: #888; font-size: .9em; }
+        .foot a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) { .container { padding: 24px 18px; } h1 { font-size: 1.55em; } h2 { font-size: 1.28em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="crumb"><a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> &rsaquo; 美区 Apple ID 共享</nav>
+
+        <h1>美区 Apple ID 共享：免费账号获取与登录下载小火箭教程</h1>
+        <p class="subtitle">下载小火箭卡在第一步，九成是因为账号地区不对。这篇讲清<strong>为什么必须用美区、共享美区 ID 从哪里拿、六步登录下载流程</strong>，以及三类报错分别该怎么处理。</p>
+
+        <h2>一、为什么下载小火箭必须用美区 Apple ID</h2>
+        <p><strong>Shadowrocket 已从中国区 App Store 下架。</strong> 用中国区账号搜索，结果里根本没有这个应用，这不是搜索技巧问题，是区域限制。</p>
+        <p>各区域的实际可用情况：</p>
+        <table>
+            <tr><th>区域</th><th>能否下载 Shadowrocket</th><th>适合场景</th></tr>
+            <tr><td>美区</td><td>✅ 可以，上架最全</td><td>首选。Shadowrocket、Quantumult X、Stash 都能下</td></tr>
+            <tr><td>台湾区</td><td>✅ 可以</td><td>部分美区没有的华语应用</td></tr>
+            <tr><td>日本区</td><td>✅ 可以</td><td>日区独占应用、游戏</td></tr>
+            <tr><td>韩国区</td><td>✅ 可以</td><td>韩区独占应用</td></tr>
+            <tr><td>中国区</td><td>❌ 已下架</td><td>搜不到，别浪费时间</td></tr>
+        </table>
+        <p>所以「美区 Apple ID 共享」这个词的搜索量一直最大——它解决的是最刚性的需求。</p>
+
+        <h2>二、共享美区 ID 从哪里获取（关键：别用文档里的旧密码）</h2>
+        <p>共享账号的运作方式是：一批美区账号由系统<strong>自动轮换密码</strong>维持可用，多个用户共用。这带来一个必须知道的后果：</p>
+        <div class="warning">
+            <strong>⚠️ 教程截图、论坛帖子里写死的密码，基本都已经失效</strong>
+            <p style="margin-top:10px;">密码每隔一段时间自动更换，写在静态页面上的密码从发布那一刻就开始过期。照抄旧密码登录，看到的一定是「密码错误」。</p>
+        </div>
+        <p><strong>正确做法：</strong>从实时列表页取当前密码。<a href="https://id.tangping.icu/">小火箭共享账号实时列表</a> 会逐条显示每个账号的当前状态（在线 / 维护中），点「显示密码」拿到的是此刻有效的密码，取密后该账号会在 30 分钟后进入轮换。</p>
+
+        <h2>三、六步完成下载（照着做，别跳步）</h2>
+        <ol>
+            <li><strong>先退出自己的账号</strong>：打开 App Store → 点右上角头像 → 滑到最底部 →「退出登录」。</li>
+            <li><strong>在同一位置登录共享账号</strong>：输入刚取到的美区账号和密码。</li>
+            <li><strong>处理首次登录提示</strong>：若弹出「此 Apple ID 尚未在 App Store 使用过」，点「检查」→ 同意条款即可，属正常提示，不是出错。</li>
+            <li><strong>搜索并下载</strong>：搜 <code>Shadowrocket</code>，价格位置显示云朵图标（表示已购）即可直接下载，不会扣费。</li>
+            <li><strong>下载完立刻退出</strong>：回到 App Store 头像 → 滑到底 →「退出登录」，然后登录回你自己的账号。</li>
+            <li><strong>导入订阅</strong>：小火箭本身不带节点，打开后需要在客户端里添加订阅链接才能上网。</li>
+        </ol>
+        <div class="ok">
+            <strong>✅ 判断登录位置是否正确的唯一标准</strong>
+            <p style="margin-top:10px;">登录界面应该是<strong>蓝色背景的 App Store 界面</strong>。如果出现「iCloud」「备份」「查找我的 iPhone」等字样，说明你登错了地方，<strong>立刻退出</strong>。</p>
+        </div>
+
+        <h2>四、三类报错的正确处理方式</h2>
+        <table>
+            <tr><th>提示原文</th><th>真实原因</th><th>该怎么做</th></tr>
+            <tr><td>密码错误 / 无法登录</td><td>用的是旧密码，或该号已被他人改动</td><td>回实时页面重新取密；仍失败直接换号，别反复重试</td></tr>
+            <tr><td>此 Apple ID 已被锁定</td><td>多人异地登录触发风控</td><td>换下一个号。锁定号需要网页端解锁 + 改密，等待无意义</td></tr>
+            <tr><td>需要验证 / 受信任手机号</td><td>账号被原持有人收回或进入安全验证</td><td>换号。这类号基本救不回来，不要在上面耗时间</td></tr>
+        </table>
+        <p>完整版（含「搜索不到应用」「无法连接 App Store」等五类报错）见 <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a>。</p>
+
+        <h2>五、免费共享 vs 独享账号，怎么选</h2>
+        <table>
+            <tr><th></th><th>免费共享美区 ID</th><th>独享美区账号</th></tr>
+            <tr><td>成本</td><td>0 元</td><td>按个购买</td></tr>
+            <tr><td>稳定性</td><td>随时可能被他人改动或被风控收回</td><td>只有你一个人用，可自行改密码</td></tr>
+            <tr><td>适合</td><td>临时下载一次应用</td><td>长期使用、需要更新应用、不想反复折腾</td></tr>
+        </table>
+        <p>只下一次小火箭，用免费共享足够。打算长期用、或者要给多台设备装，独享号省下的时间更值钱。</p>
+
+        <div class="link-box">
+            <p><strong>👉 现在就要可用的美区账号：</strong> <a href="https://id.tangping.icu/">小火箭共享账号实时可用列表</a> —— 逐条显示在线状态，点「显示密码」即取当前有效密码。</p>
+            <p><strong>📖 相关阅读：</strong> <a href="https://leo-bot66.github.io/-id-/free/">小火箭共享 ID 免费获取</a> ｜ <a href="https://leo-bot66.github.io/-id-/shadowrocket/">Shadowrocket 共享账号专题</a> ｜ <a href="https://leo-bot66.github.io/-id-/safe/">安全使用指南</a></p>
+            <p><strong>💎 想长期稳定：</strong> <a href="https://gg.tangping.icu/products">美区/港区/台区/日区/韩区老号现货</a> —— 独享账号可自行改密，不受共享风控影响。</p>
+        </div>
+
+        <div class="foot">
+            <p>相关页面：<a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> ｜ <a href="https://leo-bot66.github.io/-id-/shadowrocket/">Shadowrocket 共享账号</a> ｜ <a href="https://leo-bot66.github.io/-id-/free/">免费共享 ID</a> ｜ <a href="https://leo-bot66.github.io/-id-/shared-id/">共享 ID 是什么</a> ｜ <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查</a></p>
+        </div>
+    </div>
+</body>
+</html>

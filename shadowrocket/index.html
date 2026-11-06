@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shadowrocket 共享账号｜小火箭共享 ID 下载与使用完整指南</title>
+    <meta name="description" content="Shadowrocket 共享账号怎么用？本文讲清小火箭为什么需要美区 Apple ID、共享账号与自行注册的成本对比、完整下载步骤，以及下载后如何导入订阅、如何避免账号被锁。">
+    <meta name="keywords" content="Shadowrocket共享账号,shadowrocket共享id,shadowrocket小火箭共享账号网站,小火箭共享id,Shadowrocket下载,小火箭下载账号">
+    <link rel="canonical" href="https://leo-bot66.github.io/-id-/shadowrocket/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Shadowrocket 共享账号｜小火箭共享 ID 下载与使用完整指南">
+    <meta property="og:description" content="小火箭为什么需要美区账号、共享账号怎么用、下载后如何导入订阅，一次讲清。">
+    <meta property="og:url" content="https://leo-bot66.github.io/-id-/shadowrocket/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Shadowrocket 共享账号是免费的吗？","acceptedAnswer":{"@type":"Answer","text":"是。共享账号由维护方批量提供，多人共用同一个账号的购买记录，因此可以免费下载已购应用。代价是账号随时可能被他人改动或被风控，密码也会定期轮换。"}},
+        {"@type":"Question","name":"用小火箭共享账号下载的应用会被收回吗？","acceptedAnswer":{"@type":"Answer","text":"已下载的应用不会从设备上消失，可以继续使用。只有在需要更新该应用时，才需要重新登录对应账号；如果账号已失效，可换用其他共享账号更新。"}},
+        {"@type":"Question","name":"Shadowrocket 下载后还需要买节点吗？","acceptedAnswer":{"@type":"Answer","text":"需要。小火箭只是一个客户端，本身不含任何节点或订阅。下载完成后必须在客户端里添加机场订阅链接或手动配置节点，才能正常代理上网。"}},
+        {"@type":"Question","name":"为什么 App Store 搜不到 Shadowrocket？","acceptedAnswer":{"@type":"Answer","text":"两种可能：一是账号地区不对（中国区已下架该应用，必须用美区等区域账号）；二是当前账号的已购记录里没有该应用。先确认账号区域，再进「已购项目」搜索。"}}
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.7; color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white;
+            border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.2); padding: 40px;
+        }
+        nav.crumb { font-size: .92em; color: #888; margin-bottom: 18px; }
+        nav.crumb a { color: #667eea; text-decoration: none; }
+        nav.crumb a:hover { text-decoration: underline; }
+        h1 { color: #667eea; margin-bottom: 10px; font-size: 2em; line-height: 1.3; }
+        .subtitle { color: #666; font-size: 1.03em; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #eee; }
+        h2 { color: #667eea; margin-top: 34px; margin-bottom: 14px; font-size: 1.5em; border-left: 4px solid #667eea; padding-left: 15px; }
+        h3 { color: #555; margin: 18px 0 8px; font-size: 1.1em; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 10px 0 14px 24px; }
+        li { margin-bottom: 7px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ff6b6b; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .warning strong { color: #d63031; }
+        .ok { background: #eaf7ef; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .ok strong { color: #1e8449; }
+        .link-box { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 26px 0; border: 1px solid #e9ecef; }
+        .link-box a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .link-box a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .95em; }
+        th, td { border: 1px solid #e3e6ea; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #f4f6fb; color: #444; }
+        .foot { margin-top: 34px; padding-top: 18px; border-top: 1px solid #eee; color: #888; font-size: .9em; }
+        .foot a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) { .container { padding: 24px 18px; } h1 { font-size: 1.55em; } h2 { font-size: 1.28em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="crumb"><a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> &rsaquo; Shadowrocket 共享账号</nav>
+
+        <h1>Shadowrocket 共享账号：小火箭共享 ID 下载与使用完整指南</h1>
+        <p class="subtitle">搜「Shadowrocket 共享账号」的人，卡点几乎都一样：<strong>App Store 里搜不到这个应用</strong>。这篇从小火箭的购买机制讲起，把下载、使用、更新三条链路一次说清。</p>
+
+        <h2>一、为什么搜不到 Shadowrocket</h2>
+        <p>两个原因叠加，缺一不可：</p>
+        <ol>
+            <li><strong>区域限制</strong>：Shadowrocket 已从中国区 App Store 下架，中国区账号搜索不到，换关键词也没用。</li>
+            <li><strong>购买记录限制</strong>：Shadowrocket 是付费应用（$2.99）。即使用美区账号，如果该账号没买过，搜索结果是「获取」按钮旁的付费价格，而不是可下载的云朵图标。</li>
+        </ol>
+        <p><strong>共享账号解决的正是第二个问题</strong>——账号维护方已经买过，你登录后看到的是云朵图标（已购），可以直接下载，不需要付费。</p>
+
+        <h2>二、共享账号 vs 自己注册美区账号</h2>
+        <table>
+            <tr><th></th><th>共享账号</th><th>自己注册美区账号</th></tr>
+            <tr><td>时间成本</td><td>几分钟，取号即用</td><td>需要美国地址、免税州选择、有时要礼品卡充值</td></tr>
+            <tr><td>金钱成本</td><td>0 元</td><td>应用本身 $2.99，还需解决支付方式</td></tr>
+            <tr><td>稳定性</td><td>可能被他人改动或被风控收回</td><td>完全自主，可长期使用</td></tr>
+            <tr><td>适合</td><td>临时下载一次</td><td>长期使用、多设备、需要更新</td></tr>
+        </table>
+        <p>只装一次小火箭，共享账号的性价比无可替代。打算长期用，自己注册或买独享号更省心。</p>
+
+        <h2>三、完整下载步骤</h2>
+        <ol>
+            <li><strong>取号</strong>：从 <a href="https://id.tangping.icu/">实时可用列表</a> 挑一个「在线」的美区账号，点「显示密码」复制当前密码。</li>
+            <li><strong>退出自己的账号</strong>：App Store → 右上角头像 → 滑到底部 →「退出登录」。</li>
+            <li><strong>登录共享账号</strong>：同一位置登录，输入刚复制的账号密码。</li>
+            <li><strong>处理首次提示</strong>：弹出「此 Apple ID 尚未在 App Store 使用过」时点「检查」→ 同意条款，属正常流程。</li>
+            <li><strong>搜索下载</strong>：搜 <code>Shadowrocket</code>，看到云朵图标即点下载，不会产生扣费。</li>
+            <li><strong>立刻退出</strong>：下载完成后马上退出共享账号，换回自己的 Apple ID。</li>
+        </ol>
+        <div class="ok">
+            <strong>✅ 全程只碰 App Store</strong>
+            <p style="margin-top:10px;">不要在「设置 → 你的名字（iCloud）」里登录共享账号。那是锁机的唯一成因，和账号是否共享无关。</p>
+        </div>
+
+        <h2>四、下载之后：小火箭还需要订阅</h2>
+        <p>这是新手最容易误解的一点：<strong>小火箭本身只是一个代理客户端，不含任何节点。</strong> 下载完成、打开应用，里面是空的，直接打开开关也上不了网。</p>
+        <p>还需要一步：</p>
+        <ul>
+            <li><strong>机场订阅</strong>：从服务商处获取订阅链接，在小火箭首页点右上角「+」→ 类型选 Subscribe → 粘贴链接 → 保存，会自动拉取节点列表。</li>
+            <li><strong>手动配置</strong>：自建节点的用户，可手动添加 Shadowsocks / VMess / Trojan 等配置。</li>
+            <li><strong>选择节点并连接</strong>：订阅拉取成功后，选一个节点，打开顶部开关，首次连接会请求添加 VPN 配置，允许即可。</li>
+        </ul>
+
+        <h2>五、同类客户端：不一定要用小火箭</h2>
+        <p>如果你的需求只是「能代理上网」，iOS 上还有几个替代品，同样需要外区账号下载：</p>
+        <table>
+            <tr><th>客户端</th><th>价格</th><th>特点</th></tr>
+            <tr><td>Shadowrocket（小火箭）</td><td>$2.99</td><td>规则灵活、协议支持最全，用户最多</td></tr>
+            <tr><td>Quantumult X</td><td>$7.99</td><td>脚本能力强、界面精致，进阶用户偏好</td></tr>
+            <tr><td>Stash</td><td>内购制</td><td>Clash 内核、配置兼容性好</td></tr>
+            <tr><td>Loon</td><td>$5.99</td><td>轻量、规则语法简洁</td></tr>
+        </table>
+        <p>各客户端的下载方式与账号要求见 <a href="https://leo-bot66.github.io/-id-/clients/">客户端下载指南</a>。</p>
+
+        <h2>六、账号被锁 / 密码错误的处理</h2>
+        <div class="warning">
+            <strong>⚠️ 不要反复重试同一个账号</strong>
+            <p style="margin-top:10px;">共享账号被多人异地登录，触发风控是常态。反复用错密码登录，会加速该账号进入「已锁定」状态，对谁都没好处。</p>
+        </div>
+        <ul>
+            <li><strong>密码错误</strong>：先从实时页面重新取密（旧密码必然失效），确认地区是美区；仍失败直接换号。</li>
+            <li><strong>账号已被锁定</strong>：换号。锁定号需要网页端解锁并改密，等待不会自动恢复。</li>
+            <li><strong>需要受信任手机号验证</strong>：换号。这类账号基本已被原持有人收回。</li>
+        </ul>
+        <p>五类报错的逐条处理见 <a href="https://leo-bot66.github.io/-id-/troubleshoot/">报错排查手册</a>。</p>
+
+        <div class="link-box">
+            <p><strong>👉 现在就能下载：</strong> <a href="https://id.tangping.icu/">小火箭共享账号实时可用列表</a> —— 逐条显示在线状态，点「显示密码」取当前有效密码。</p>
+            <p><strong>📖 相关阅读：</strong> <a href="https://leo-bot66.github.io/-id-/us-apple-id/">美区 Apple ID 共享</a> ｜ <a href="https://leo-bot66.github.io/-id-/free/">免费共享 ID 获取</a> ｜ <a href="https://leo-bot66.github.io/-id-/clients/quantumult-x/">Quantumult X 下载</a></p>
+            <p><strong>💎 想长期稳定：</strong> <a href="https://gg.tangping.icu/products/upstream-1-6-1787508489116">自带 Shadowrocket 的成品独享号</a> —— 开箱即用，可自行改密。</p>
+        </div>
+
+        <div class="foot">
+            <p>相关页面：<a href="https://leo-bot66.github.io/-id-/">小火箭共享账号首页</a> ｜ <a href="https://leo-bot66.github.io/-id-/us-apple-id/">美区 Apple ID 共享</a> ｜ <a href="https://leo-bot66.github.io/-id-/free/">免费共享 ID</a> ｜ <a href="https://leo-bot66.github.io/-id-/shared-id/">共享 ID 是什么</a> ｜ <a href="https://leo-bot66.github.io/-id-/clients/">客户端指南</a></p>
+        </div>
+    </div>
+</body>
+</html>
